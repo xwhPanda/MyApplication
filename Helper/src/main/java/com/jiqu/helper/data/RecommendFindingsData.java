@@ -1,19 +1,19 @@
 package com.jiqu.helper.data;
 
-import java.io.Serializable;
 import java.util.List;
 
 /**
- * Created by xiongweihua on 2016/7/26.
+ * Created by xiongweihua on 2016/7/27.
  */
-public class RecommendClassificationData implements Serializable{
+public class RecommendFindingsData {
+
     /**
      * status : 1
      * data : []
      */
 
     private int status;
-    private List<RecommendClassificationItemData> data;
+    private List<RecommendFindingsItemInfo> data;
 
     public int getStatus() {
         return status;
@@ -23,11 +23,11 @@ public class RecommendClassificationData implements Serializable{
         this.status = status;
     }
 
-    public List<RecommendClassificationItemData> getData() {
+    public List<RecommendFindingsItemInfo> getData() {
         return data;
     }
 
-    public void setData(List<RecommendClassificationItemData> data) {
+    public void setData(List<RecommendFindingsItemInfo> data) {
         this.data = data;
     }
 }

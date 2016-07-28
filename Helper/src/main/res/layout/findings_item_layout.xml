@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            fresco:fadeDuration="300"
+            fresco:placeholderImage="@mipmap/ic_launcher"
+            fresco:failureImage="@mipmap/ic_launcher"
+            android:layout_centerVertical="true"/>
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:textColor="@color/game_name_color"
+            android:lines="1"
+            android:ellipsize="end"
+            android:layout_toRightOf="@id/icon"/>
+
+        <Button
+            android:id="@+id/download"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:background="@drawable/download_selector"/>
+
+        <TextView
+            android:id="@+id/decs"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@id/name"
+            android:layout_toLeftOf="@id/download"
+            android:textColor="@color/recommend_choice_game_detail_color"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/detailRel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <com.facebook.drawee.view.SimpleDraweeView
+            android:id="@+id/detailPic"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            fresco:fadeDuration="300"
+            fresco:placeholderImage="@mipmap/ic_launcher"
+            fresco:failureImage="@mipmap/ic_launcher"/>
+
+        <LinearLayout
+            android:id="@+id/tagLin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:background="@mipmap/rank_bg_1">
+            <TextView
+                android:id="@+id/tagText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:textColor="@color/white"
+                android:layout_weight="17"
+                android:text="游戏"
+                android:textStyle="bold"
+                android:gravity="center"/>
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="13"/>
+        </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:id="@+id/fromText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:text="来自"
+            android:textColor="@color/recommend_choice_game_detail_color"/>
+        <TextView
+            android:id="@+id/fromWhere"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/fromText"
+            android:layout_centerVertical="true"
+            android:lines="1"
+            android:textColor="@color/from_where_color"/>
+
+        <ImageView
+            android:id="@+id/loveImg"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:background="@mipmap/love"/>
+
+        <TextView
+            android:id="@+id/loveText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/loveImg"
+            android:layout_centerVertical="true"
+            android:lines="1"
+            android:ellipsize="end"
+            android:textColor="@color/recommend_choice_game_detail_color"/>
+    </RelativeLayout>
+</LinearLayout>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:pager="http://schemas.android.com/apk/res/com.jiqu.helper"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.jiqu.helper.view.FragmentAndViewPager
+        android:id="@+id/recommendViewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        pager:backgroundColor="@color/topBlue"
+        pager:afterBackgroundColor="@color/topSelectedBlue"
+        pager:hasTabStrip="false"/>
+</RelativeLayout>

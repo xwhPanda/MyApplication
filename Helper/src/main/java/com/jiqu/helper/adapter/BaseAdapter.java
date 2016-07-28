@@ -31,6 +31,7 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter<BaseHolder>{
     @Override
     public BaseHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(HelperApplication.context).inflate(mViewId,parent,false);
+        Log.i("TAG","onCreateViewHolder");
         return getHolder(view);
     }
 
@@ -44,7 +45,6 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter<BaseHolder>{
 
     @Override
     public void onBindViewHolder(BaseHolder holder, int position) {
-        Log.i("TAG","position : " + position);
         if (mDatas == null || mDatas.size() <= 0){
             convert(holder,null);
         }else {

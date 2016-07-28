@@ -56,12 +56,17 @@ public class OkHttpManager {
             }
 
             @Override
-            public void onResponse(Call call, Response response) throws IOException {
+            public void onResponse(final Call call, Response response) throws IOException {
                 String json = response.body().string();
                 Log.i("TAG",json);
                 if (!TextUtils.isEmpty(json)){
-                    Object data = JSON.parseObject(json,className);
-                    callback.onSucceed(call,data);
+                    final Object data = JSON.parseObject(json,className);
+                    mHandler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            callback.onSucceed(call,data);
+                        }
+                    });
                 }else {
                     Log.e(TAG,"recommend data is null !");
                 }

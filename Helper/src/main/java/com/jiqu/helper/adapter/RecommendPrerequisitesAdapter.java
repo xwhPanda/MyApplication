@@ -33,9 +33,4 @@ public class RecommendPrerequisitesAdapter extends BaseAdapter{
         ((TextView)baseHolder.getView(R.id.tagText)).setText("交友聊天");
         baseHolder.getView(R.id.tagLin).setBackgroundResource(R.mipmap.prerequisites_blue);
     }
-
-    @Override
-    public int getItemCount() {
-        return 5;
-    }
 }

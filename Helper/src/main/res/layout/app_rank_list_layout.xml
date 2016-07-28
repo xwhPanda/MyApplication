@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:pager="http://schemas.android.com/apk/res/com.jiqu.helper"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.jiqu.helper.view.FragmentAndViewPager
+        android:id="@+id/fragmentViewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        pager:beforeColor="@color/list_rank_default_color"
+        pager:afterColor="@color/topBlue"
+        pager:hasTabStrip="true"
+        pager:tabStripColor="@color/topBlue">
+
+    </com.jiqu.helper.view.FragmentAndViewPager>
+</LinearLayout>

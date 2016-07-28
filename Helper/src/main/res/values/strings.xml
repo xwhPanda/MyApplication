@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">Helper</string>
+
+    <string name="recommend">推荐</string>
+    <string name="game">游戏</string>
+    <string name="app">应用</string>
+    <string name="account">我的</string>
+    <string name="tool">工具</string>
+
+    <string name="home_choice_recommend_text">为您推荐有优秀的必备应用</string>
+    <string name="game_download_text">下载 : </string>
+    <string name="game_size_text">大小 : </string>
+    <string name="app_rank_text">软件榜单</string>
+    <string name="game_rank_text">游戏榜单</string>
+    <string name="app_prerequisites_text">软件</string>
+    <string name="game_prerequisites_text">游戏</string>
+    <string name="love_number">人喜欢</string>
+</resources>

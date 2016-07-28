@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white">
+
+    <com.jiqu.helper.view.AdViewPager
+        android:id="@+id/adViewPager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <RelativeLayout
+        android:id="@+id/recommendRel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/adViewPager">
+
+        <TextView
+            android:id="@+id/recommendTip"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:lines="1"
+            android:text="@string/home_choice_recommend_text"
+            android:textColor="@color/game_name_color" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignLeft="@id/recommendTip"
+            android:layout_below="@id/recommendTip">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recommendRecycleView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true" />
+
+            <Button
+                android:id="@+id/oneKeyDownload"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@id/recommendRecycleView"
+                android:background="@drawable/one_key_download_selector"
+                android:textColor="@color/white" />
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

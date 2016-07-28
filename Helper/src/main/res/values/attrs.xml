@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="FragmentAndViewPager">
+        <attr name="beforeColor" format="color"/>
+        <attr name="afterColor" format="color"/>
+        <attr name="backgroundColor" format="color"/>
+        <attr name="afterBackgroundColor" format="color"/>
+        <attr name="tabStripColor" format="color"/>
+        <attr name="hasTabStrip" format="boolean"/>
+    </declare-styleable>
+</resources>
