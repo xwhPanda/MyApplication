@@ -67,11 +67,37 @@
         android:layout_height="1dp"
         android:background="@color/recommend_choice_space_color"/>
 
-    <com.sch.rfview.AnimRFRecyclerView
-        android:id="@+id/prerequisitesRecycleView"
+    <RelativeLayout
+        android:id="@+id/appPrerequisitesRel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.sch.rfview.AnimRFRecyclerView
+            android:id="@+id/appPrerequisitesRecycleView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/recommend_choice_space_color">
+        </com.sch.rfview.AnimRFRecyclerView>
+        <com.jiqu.helper.view.RefreshView
+            android:id="@+id/appRefreshView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/gamePrerequisitesRel"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/recommend_choice_space_color">
-    </com.sch.rfview.AnimRFRecyclerView>
+        android:visibility="gone">
+        <com.sch.rfview.AnimRFRecyclerView
+            android:id="@+id/gamePrerequisitesRecycleView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/recommend_choice_space_color">
+        </com.sch.rfview.AnimRFRecyclerView>
+        <com.jiqu.helper.view.RefreshView
+            android:id="@+id/gameRefreshView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </RelativeLayout>
 
 </LinearLayout>

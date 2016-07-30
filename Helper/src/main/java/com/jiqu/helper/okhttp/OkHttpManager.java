@@ -58,7 +58,6 @@ public class OkHttpManager {
             @Override
             public void onResponse(final Call call, Response response) throws IOException {
                 String json = response.body().string();
-                Log.i("TAG",json);
                 if (!TextUtils.isEmpty(json)){
                     final Object data = JSON.parseObject(json,className);
                     mHandler.post(new Runnable() {
@@ -74,7 +73,8 @@ public class OkHttpManager {
         });
     }
 
-    public void cancleByTag(String tag){
+    /** 根据TAG取消请求 **/
+    public void cancelByTag(String tag){
         for (Call call : mOkHttpClient.dispatcher().queuedCalls()){
             if (tag.equals(call.request().tag()) && !call.isCanceled())
                 call.cancel();
@@ -84,6 +84,15 @@ public class OkHttpManager {
         {
             if (tag.equals(call.request().tag()))
                 call.cancel();
+        }
+    }
+
+    /** 根据TAG重新请求 **/
+    public void requestAgainByTag(String tag) throws IOException{
+        for (Call call:mOkHttpClient.dispatcher().queuedCalls()){
+            if (tag.equals(call.request().tag()) && call.isExecuted()){
+                call.execute();
+            }
         }
     }
 

@@ -21,17 +21,18 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter<BaseHolder>{
     private List<T> mDatas;
     private int mViewId;
     private RecycleViewOnItemClickListener listener;
+    private BaseAdapter adapter;
 
     public BaseAdapter(Context context,int viewId,List<T> datas){
         this.context = context;
         mViewId = viewId;
         mDatas = datas;
+        adapter = this;
     }
 
     @Override
     public BaseHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(HelperApplication.context).inflate(mViewId,parent,false);
-        Log.i("TAG","onCreateViewHolder");
         return getHolder(view);
     }
 
@@ -44,7 +45,7 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter<BaseHolder>{
     public abstract void convert(BaseHolder baseHolder, T t);
 
     @Override
-    public void onBindViewHolder(BaseHolder holder, int position) {
+    public void onBindViewHolder(BaseHolder holder, final int position) {
         if (mDatas == null || mDatas.size() <= 0){
             convert(holder,null);
         }else {
@@ -54,7 +55,7 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter<BaseHolder>{
             holder.getmContentView().setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    listener.onItemClick();
+                    listener.onItemClick(view,adapter,position);
                 }
             });
         }

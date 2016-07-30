@@ -72,9 +72,34 @@
         </LinearLayout>
     </LinearLayout>
 
-    <com.sch.rfview.AnimRFRecyclerView
-        android:id="@+id/recycleView"
+    <RelativeLayout
+        android:id="@+id/appRel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <com.sch.rfview.AnimRFRecyclerView
+            android:id="@+id/recycleView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/recommend_choice_space_color"/>
+        <com.jiqu.helper.view.RefreshView
+            android:id="@+id/appRefreshView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/gameRel"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/recommend_choice_space_color"/>
+        android:visibility="gone">
+        <com.sch.rfview.AnimRFRecyclerView
+            android:id="@+id/gameRecycleView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/recommend_choice_space_color"/>
+        <com.jiqu.helper.view.RefreshView
+            android:id="@+id/gameRefreshView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </RelativeLayout>
 </LinearLayout>

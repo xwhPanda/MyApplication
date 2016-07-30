@@ -14,4 +14,8 @@ public class RequestTools {
     public static final String RECOMMEND_APP_RANK = "http://koa.77gamebox.com/index.php/Api/Recommend/getApp?columnId=63";
     /** 推荐游戏榜单 **/
     public static final String RECOMMEND_GAME_RANK = "http://koa.77gamebox.com/index.php/Api/Recommend/getApp?columnId=64";
+    /** 推荐必备应用 **/
+    public static final String RCOMMEND_APP_PREREQUISITES = "http://koa.77gamebox.com/index.php/Api/Recommend/getNecessarySoft";
+    /** 推荐必备游戏 **/
+    public static final String RECOMMEND_GAME_PREREQUISITES = "http://koa.77gamebox.com/index.php/Api/Recommend/getNecessaryGame";
 }

@@ -8,4 +8,31 @@
         <attr name="tabStripColor" format="color"/>
         <attr name="hasTabStrip" format="boolean"/>
     </declare-styleable>
+
+    <declare-styleable name="RatingBar">
+
+        <!-- 选中的图片资源 -->
+        <attr name="starSrc" format="reference" />
+        <!-- 未选中的图片资源 -->
+        <attr name="starDst" format="reference" />
+        <!-- boolean值 -->
+        <attr name="clickable" format="boolean" />
+        <attr name="step" format="float" />
+        <!-- 每两个星星见距离 -->
+        <attr name="space" format="float" />
+        <!-- 星星的个数 -->
+        <attr name="starNumber" format="integer" />
+    </declare-styleable>
+
+    <declare-styleable name="MyImageButton">
+        <attr name="textColorDefault" format="color"/>
+        <attr name="textColorSelected" format="color"/>
+        <attr name="text" format="string"/>
+        <attr name="imageDefault" format="reference"/>
+        <attr name="imageSelected" format="reference"/>
+        <attr name="textSize" format="integer"/>
+        <attr name="imageWidth" format="integer"/>
+        <attr name="imageHeight" format="integer"/>
+        <attr name="verSpace" format="integer"/>
+    </declare-styleable>
 </resources>

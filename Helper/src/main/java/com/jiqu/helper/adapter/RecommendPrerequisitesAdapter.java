@@ -9,8 +9,10 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.jiqu.helper.R;
+import com.jiqu.helper.data.RecommendPrerequisitesData;
 import com.jiqu.helper.holders.BaseHolder;
 import com.jiqu.helper.holders.RecommendPrerequisitesHolder;
+import com.jiqu.helper.itemDecoration.SpaceItemDecoration;
 
 import java.util.List;
 
@@ -18,9 +20,11 @@ import java.util.List;
  * Created by xiongweihua on 2016/7/21.
  */
 public class RecommendPrerequisitesAdapter extends BaseAdapter{
+    private Context context;
 
     public RecommendPrerequisitesAdapter(Context context, int viewId, List datas) {
         super(context, viewId, datas);
+        this.context = context;
     }
 
     @Override
@@ -29,8 +33,15 @@ public class RecommendPrerequisitesAdapter extends BaseAdapter{
     }
 
     @Override
-    public void convert(BaseHolder baseHolder, Object o) {
-        ((TextView)baseHolder.getView(R.id.tagText)).setText("交友聊天");
-        baseHolder.getView(R.id.tagLin).setBackgroundResource(R.mipmap.prerequisites_blue);
+    public void convert(BaseHolder baseHolder, Object object) {
+        if (object != null){
+            RecommendPrerequisitesData.RecommendPrerequisitesInfo info = (RecommendPrerequisitesData.RecommendPrerequisitesInfo)object;
+            ((TextView)baseHolder.getView(R.id.tagText)).setText(info.getName());
+            baseHolder.getView(R.id.tagLin).setBackgroundResource(R.mipmap.prerequisites_blue);
+            RecyclerView recyclerView = (RecyclerView)baseHolder.getView(R.id.recycleView);
+            recyclerView.addItemDecoration(new SpaceItemDecoration(2,0));
+            recyclerView.setHasFixedSize(true);
+            recyclerView.setAdapter(new RecommendAppAdapter(context,R.layout.recommend_app_item_layout,info.getCol()));
+        }
     }
 }

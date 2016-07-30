@@ -1,8 +1,8 @@
 package com.jiqu.helper;
 
-import android.app.Activity;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.WindowManager;
 
 import com.jiqu.helper.tools.MetricsTool;
@@ -10,7 +10,7 @@ import com.jiqu.helper.tools.MetricsTool;
 /**
  * Created by xiongweihua on 2016/7/4.
  */
-public abstract class BaseActivity  extends Activity{
+public abstract class BaseActivity  extends AppCompatActivity{
     protected  float Rx,Ry;
 
     @Override
@@ -30,7 +30,7 @@ public abstract class BaseActivity  extends Activity{
         /** 沉浸式菜单栏，顶部菜单栏跟APP颜色保持一致 **/
         if (Build.VERSION.SDK_INT >= 19) {
             /** 顶部通知栏透明 **/
-//            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
             getWindow().addFlags(67108864);
             /** 底部状态栏透明 **/
 //            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);

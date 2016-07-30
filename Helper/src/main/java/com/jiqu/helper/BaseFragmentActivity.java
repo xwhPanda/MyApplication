@@ -31,7 +31,7 @@ public abstract class BaseFragmentActivity extends FragmentActivity{
         /** 沉浸式菜单栏，顶部菜单栏跟APP颜色保持一致 **/
         if (Build.VERSION.SDK_INT >= 19) {
             /** 顶部通知栏透明 **/
-//            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);.
+            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
             getWindow().addFlags(67108864);
             /** 底部状态栏透明 **/
 //            getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_NAVIGATION);

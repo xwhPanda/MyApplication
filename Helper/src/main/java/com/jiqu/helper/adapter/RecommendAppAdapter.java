@@ -22,7 +22,7 @@ import java.util.List;
 /**
  * Created by xiongweihua on 2016/7/7.
  */
-public class RecommendAppAdapter extends BaseAdapter {
+public class RecommendAppAdapter extends BaseAdapter{
 
     public RecommendAppAdapter(Context context, int viewId, List datas) {
         super(context, viewId, datas);

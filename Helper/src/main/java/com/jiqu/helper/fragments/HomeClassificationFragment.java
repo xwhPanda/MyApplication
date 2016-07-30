@@ -15,6 +15,7 @@ import com.jiqu.helper.interfaces.GetDataCallback;
 import com.jiqu.helper.okhttp.OkHttpManager;
 import com.jiqu.helper.okhttp.OkHttpRequest;
 import com.jiqu.helper.tools.RequestTools;
+import com.jiqu.helper.view.RefreshView;
 import com.sch.rfview.AnimRFRecyclerView;
 import com.sch.rfview.manager.AnimRFLinearLayoutManager;
 
@@ -33,6 +34,7 @@ public class HomeClassificationFragment extends BaseFragment implements AnimRFRe
     private AnimRFRecyclerView classificationRecycleView;
     private List<RecommendClassificationItemData> itemDatas = new ArrayList<>();
     private RecommendClassificationAdapter adapter;
+    private RefreshView refreshView;
 
     @Override
     public View getContentView() {
@@ -44,6 +46,7 @@ public class HomeClassificationFragment extends BaseFragment implements AnimRFRe
     public void initView() {
         adapter = new RecommendClassificationAdapter(mActivity,R.layout.recommend_classification_item_layout,itemDatas);
         classificationRecycleView = (AnimRFRecyclerView) view.findViewById(R.id.classificationRecycleView);
+        refreshView = (RefreshView) view.findViewById(R.id.refreshView);
 
         AnimRFLinearLayoutManager manager = new AnimRFLinearLayoutManager(mActivity);
         manager.setOrientation(OrientationHelper.VERTICAL);
@@ -68,6 +71,7 @@ public class HomeClassificationFragment extends BaseFragment implements AnimRFRe
             public void onSucceed(Call call, Object data) {
                 RecommendClassificationData recommendClassificationData = (RecommendClassificationData)data;
                 if (recommendClassificationData.getStatus() == 1){
+                    refreshView.setVisibility(View.GONE);
                     itemDatas.clear();
                     itemDatas.addAll(recommendClassificationData.getData());
                     classificationRecycleView.bringToFront();
@@ -84,7 +88,7 @@ public class HomeClassificationFragment extends BaseFragment implements AnimRFRe
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        OkHttpManager.getInstance().cancleByTag(OKHTTP_TAG);
+        OkHttpManager.getInstance().cancelByTag(OKHTTP_TAG);
     }
 
     @Override

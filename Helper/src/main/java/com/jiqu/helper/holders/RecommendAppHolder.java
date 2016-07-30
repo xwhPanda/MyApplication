@@ -18,6 +18,7 @@ import com.jiqu.helper.tools.UIUtil;
  * Created by xiongweihua on 2016/7/7.
  */
 public class RecommendAppHolder extends BaseHolder{
+    public RelativeLayout parentView;
     public LinearLayout rankLin;
     public TextView rankText;
     public SimpleDraweeView gameIcon;
@@ -44,6 +45,7 @@ public class RecommendAppHolder extends BaseHolder{
 
     @Override
     public void initView(){
+        parentView = (RelativeLayout) itemView.findViewById(R.id.parentView);
         rankLin = (LinearLayout) itemView.findViewById(R.id.rankLin);
         rankText = (TextView) itemView.findViewById(R.id.rankText);
         gameIcon = (SimpleDraweeView) itemView.findViewById(R.id.gameIcon);
@@ -74,6 +76,7 @@ public class RecommendAppHolder extends BaseHolder{
             UIUtil.setTextSize(downloadingTip,25);
             UIUtil.setTextSize(rankText,30);
 
+            UIUtil.setViewHeight(parentView,MetricsTool.Rx * 245);
             UIUtil.setViewSize(rankLin,MetricsTool.Rx * 150,MetricsTool.Rx * 54);
             UIUtil.setViewSize(download, MetricsTool.Rx * 114,MetricsTool.Rx * 90);
             UIUtil.setViewSize(gameGift,MetricsTool.Rx * 45,MetricsTool.Rx * 45);
@@ -86,8 +89,8 @@ public class RecommendAppHolder extends BaseHolder{
             UIUtil.setViewSizeMargin(gameDetailRel,MetricsTool.Rx * 25 ,0,0,0);
             UIUtil.setViewSizeMargin(gameSizeLin,0,MetricsTool.Rx * 15,0,0);
             UIUtil.setViewSizeMargin(gameDetail,0,MetricsTool.Rx * 15,0,0);
+            UIUtil.setViewSizeMargin(downloadRel,0,0,MetricsTool.Rx * 35,0);
             UIUtil.setViewSizeMargin(gameIcon,MetricsTool.Rx * 35,MetricsTool.Rx * 40,0,MetricsTool.Rx * 40);
-            UIUtil.setViewSizeMargin(downloadRel,0,MetricsTool.Rx * 20,0,0);
         } catch (Exception e) {
             e.printStackTrace();
         }

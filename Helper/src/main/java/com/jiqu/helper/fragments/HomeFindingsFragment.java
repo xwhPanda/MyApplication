@@ -86,6 +86,6 @@ public class HomeFindingsFragment extends BaseFragment {
     @Override
     public void onDestroyView() {
         super.onDestroyView();
-        OkHttpManager.getInstance().cancleByTag(OKHTTP_TAG);
+        OkHttpManager.getInstance().cancelByTag(OKHTTP_TAG);
     }
 }

@@ -15,4 +15,8 @@
     <string name="app_prerequisites_text">软件</string>
     <string name="game_prerequisites_text">游戏</string>
     <string name="love_number">人喜欢</string>
+    <string name="load_again">重新加载</string>
+    <string name="detail_free">免费</string>
+    <string name="detail_safe">安全</string>
+    <string name="detail_no_ad">无广告</string>
 </resources>

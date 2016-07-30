@@ -20,4 +20,5 @@
     <color name="list_rank_default_color">#737373</color>
     <color name="list_rank_selected_color">#f29600</color>
     <color name="from_where_color">#40c6f2</color>
+    <color name="detail_name_color">#e1e401</color>
 </resources>

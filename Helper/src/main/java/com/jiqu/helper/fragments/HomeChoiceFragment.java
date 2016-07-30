@@ -1,5 +1,6 @@
 package com.jiqu.helper.fragments;
 
+import android.content.Intent;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
@@ -14,11 +15,14 @@ import android.widget.TextView;
 
 import com.jiqu.helper.BaseFragment;
 import com.jiqu.helper.R;
+import com.jiqu.helper.activity.DetailActivity;
+import com.jiqu.helper.adapter.BaseAdapter;
 import com.jiqu.helper.adapter.RecommendAppAdapter;
 import com.jiqu.helper.adapter.RecommendRecycleAdapter;
 import com.jiqu.helper.data.GameInfo;
 import com.jiqu.helper.data.RecommendData;
 import com.jiqu.helper.interfaces.GetDataCallback;
+import com.jiqu.helper.interfaces.RecycleViewOnItemClickListener;
 import com.jiqu.helper.itemDecoration.SpaceItemDecoration;
 import com.jiqu.helper.okhttp.OkHttpManager;
 import com.jiqu.helper.okhttp.OkHttpRequest;
@@ -26,6 +30,7 @@ import com.jiqu.helper.tools.RequestTools;
 import com.jiqu.helper.tools.UIUtil;
 import com.jiqu.helper.view.AdViewPager;
 import com.jiqu.helper.view.LoadMoreView;
+import com.jiqu.helper.view.RefreshView;
 import com.sch.rfview.AnimRFRecyclerView;
 import com.sch.rfview.manager.AnimRFLinearLayoutManager;
 
@@ -39,12 +44,14 @@ import okhttp3.Call;
  * Created by xiongweihua on 2016/7/6.
  * 首页精选
  */
-public class HomeChoiceFragment extends BaseFragment implements AnimRFRecyclerView.LoadDataListener{
+public class HomeChoiceFragment extends BaseFragment implements AnimRFRecyclerView.LoadDataListener
+            ,RecycleViewOnItemClickListener {
     private final String OKHTTP_TAG = "HomeChoiceFragment";
     private View headView;
     private AdViewPager adViewPager;
     private TextView recommendTip;
     private RecyclerView recommendRecycleView;
+    private RefreshView refreshView;
     private AnimRFRecyclerView recommendAppRecycleView;
     private Button oneKeyDownload;
     private RecommendAppAdapter recommendAppAdapter;
@@ -62,7 +69,9 @@ public class HomeChoiceFragment extends BaseFragment implements AnimRFRecyclerVi
     @Override
     public void initView() {
         recommendAppAdapter = new RecommendAppAdapter(mActivity,R.layout.recommend_app_item_layout,recommendAppList);
+        recommendAppAdapter.setListener(this);
         recommendRecycleAdapter = new RecommendRecycleAdapter(mActivity,R.layout.recommend_recycle_item,oneKeyInstallList);
+        recommendRecycleAdapter.setListener(this);
 
         headView = LayoutInflater.from(mActivity).inflate(R.layout.home_choice_head_layout,null);
         adViewPager = (AdViewPager) headView.findViewById(R.id.adViewPager);
@@ -70,6 +79,7 @@ public class HomeChoiceFragment extends BaseFragment implements AnimRFRecyclerVi
         recommendRecycleView = (RecyclerView) headView.findViewById(R.id.recommendRecycleView);
         oneKeyDownload = (Button) headView.findViewById(R.id.oneKeyDownload);
         recommendAppRecycleView = (AnimRFRecyclerView) view.findViewById(R.id.recommendAppRecycleView);
+        refreshView = (RefreshView) view.findViewById(R.id.refreshView);
 
         LinearLayoutManager manager = new LinearLayoutManager(mActivity);
         recommendRecycleView.setLayoutManager(manager);
@@ -79,10 +89,11 @@ public class HomeChoiceFragment extends BaseFragment implements AnimRFRecyclerVi
         recommendRecycleView.setAdapter(recommendRecycleAdapter);
 
         AnimRFLinearLayoutManager layoutManager = new AnimRFLinearLayoutManager(mActivity);
+        layoutManager.setOrientation(OrientationHelper.VERTICAL);
         recommendAppRecycleView.setLayoutManager(layoutManager);
+        recommendAppRecycleView.setRefreshEnable(false);
         recommendAppRecycleView.setHasFixedSize(true);
         recommendAppRecycleView.addItemDecoration(new SpaceItemDecoration(Rx * 2,0));
-        layoutManager.setOrientation(OrientationHelper.VERTICAL);
         recommendAppRecycleView.setAdapter(recommendAppAdapter);
         recommendAppRecycleView.addHeaderView(headView);
         recommendAppRecycleView.addFootView(new LoadMoreView(mActivity));
@@ -113,6 +124,7 @@ public class HomeChoiceFragment extends BaseFragment implements AnimRFRecyclerVi
 
             @Override
             public void onSucceed(Call call, Object data) {
+                refreshView.setVisibility(View.GONE);
                 final RecommendData recommendData = (RecommendData) data;
                 adViewPager.setData(recommendData.getData1());
                 adViewPager.startTimer();
@@ -139,7 +151,7 @@ public class HomeChoiceFragment extends BaseFragment implements AnimRFRecyclerVi
     public void onDestroyView() {
         super.onDestroyView();
         adViewPager.cancelTimer();
-        OkHttpManager.getInstance().cancleByTag(OKHTTP_TAG);
+        OkHttpManager.getInstance().cancelByTag(OKHTTP_TAG);
     }
 
     @Override
@@ -150,5 +162,14 @@ public class HomeChoiceFragment extends BaseFragment implements AnimRFRecyclerVi
     @Override
     public void onLoadMore() {
 
+    }
+
+    @Override
+    public void onItemClick(View view, BaseAdapter baseAdapter,int position) {
+        if (baseAdapter instanceof RecommendAppAdapter){
+            startActivity(new Intent(mActivity, DetailActivity.class));
+        }else if(baseAdapter instanceof RecommendRecycleAdapter){
+
+        }
     }
 }

@@ -1,11 +1,71 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<com.jiqu.helper.view.MyScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/holo_red_dark">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textColor="@color/white"/>
-</RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white">
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/adOne"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                fresco:failureImage="@mipmap/ic_launcher"
+                fresco:placeholderImage="@mipmap/ic_launcher"
+                fresco:fadeDuration="300"/>
+            <View
+                android:layout_width="3dp"
+                android:layout_height="match_parent"/>
+            <com.facebook.drawee.view.SimpleDraweeView
+                android:id="@+id/adTwo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                fresco:failureImage="@mipmap/ic_launcher"
+                fresco:placeholderImage="@mipmap/ic_launcher"
+                fresco:fadeDuration="300"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <com.jiqu.helper.view.MyImageButton
+                android:id="@+id/newGame"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+            <View
+                android:layout_width="2dp"
+                android:layout_height="match_parent"/>
+            <com.jiqu.helper.view.MyImageButton
+                android:id="@+id/artifact"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+            <View
+                android:layout_width="2dp"
+                android:layout_height="match_parent"/>
+            <com.jiqu.helper.view.MyImageButton
+                android:id="@+id/schoolgirl"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+            <View
+                android:layout_width="2dp"
+                android:layout_height="match_parent"/>
+            <com.jiqu.helper.view.MyImageButton
+                android:id="@+id/online"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"/>
+        </LinearLayout>
+    </LinearLayout>
+</com.jiqu.helper.view.MyScrollView>

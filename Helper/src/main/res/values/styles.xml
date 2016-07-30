@@ -9,4 +9,8 @@
         <item name="android:progressDrawable">@drawable/download_progress_bg</item>
         <item name="android:indeterminateDrawable">@android:drawable/progress_indeterminate_horizontal</item>
     </style>
+
+    <style name="ratingBarStyle" parent="@android:style/Widget.RatingBar">
+        <item name="android:progressDrawable">@drawable/ratingbar_drawable</item>
+    </style>
 </resources>
