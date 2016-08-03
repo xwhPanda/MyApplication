@@ -18,7 +18,7 @@ import java.util.List;
  */
 public abstract class BaseAdapter<T> extends RecyclerView.Adapter<BaseHolder>{
     private Context context;
-    private List<T> mDatas;
+    public List<T> mDatas;
     private int mViewId;
     private RecycleViewOnItemClickListener listener;
     private BaseAdapter adapter;
@@ -42,15 +42,11 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter<BaseHolder>{
     }
 
     public abstract BaseHolder getHolder(View view);
-    public abstract void convert(BaseHolder baseHolder, T t);
+    public abstract void convert(BaseHolder baseHolder,int position);
 
     @Override
     public void onBindViewHolder(BaseHolder holder, final int position) {
-        if (mDatas == null || mDatas.size() <= 0){
-            convert(holder,null);
-        }else {
-            convert(holder, mDatas.get(position));
-        }
+        convert(holder,position);
         if (listener != null){
             holder.getmContentView().setOnClickListener(new View.OnClickListener() {
                 @Override

@@ -31,11 +31,9 @@ public class RecommendRecycleAdapter extends BaseAdapter{
     }
 
     @Override
-    public void convert(BaseHolder baseHolder, Object object) {
-        if (object != null){
-            GameInfo gameInfo = (GameInfo) object;
+    public void convert(BaseHolder baseHolder, int position) {
+            GameInfo gameInfo = (GameInfo) mDatas.get(position);
             Uri uri = Uri.parse(gameInfo.getIcon());
             ((SimpleDraweeView)baseHolder.getView(R.id.icon)).setImageURI(uri);
-        }
     }
 }

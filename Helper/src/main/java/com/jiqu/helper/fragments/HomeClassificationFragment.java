@@ -32,7 +32,8 @@ import okhttp3.Call;
 public class HomeClassificationFragment extends BaseFragment implements AnimRFRecyclerView.LoadDataListener{
     private final String OKHTTP_TAG = "HomeClassificationFragment";
     private AnimRFRecyclerView classificationRecycleView;
-    private List<RecommendClassificationItemData> itemDatas = new ArrayList<>();
+    private List<String> titleList = new ArrayList<>();
+    private List<List<RecommendClassificationItemData>> itemDatas = new ArrayList<>();
     private RecommendClassificationAdapter adapter;
     private RefreshView refreshView;
 
@@ -44,7 +45,7 @@ public class HomeClassificationFragment extends BaseFragment implements AnimRFRe
 
     @Override
     public void initView() {
-        adapter = new RecommendClassificationAdapter(mActivity,R.layout.recommend_classification_item_layout,itemDatas);
+        adapter = new RecommendClassificationAdapter(mActivity,R.layout.recommend_classification_item_layout,itemDatas,titleList);
         classificationRecycleView = (AnimRFRecyclerView) view.findViewById(R.id.classificationRecycleView);
         refreshView = (RefreshView) view.findViewById(R.id.refreshView);
 
@@ -73,7 +74,9 @@ public class HomeClassificationFragment extends BaseFragment implements AnimRFRe
                 if (recommendClassificationData.getStatus() == 1){
                     refreshView.setVisibility(View.GONE);
                     itemDatas.clear();
-                    itemDatas.addAll(recommendClassificationData.getData());
+                    itemDatas.addAll(recommendClassificationData.getData2());
+                    titleList.clear();
+                    titleList.addAll(recommendClassificationData.getData1());
                     classificationRecycleView.bringToFront();
                 }
             }

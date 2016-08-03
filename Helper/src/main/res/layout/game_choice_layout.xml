@@ -2,70 +2,58 @@
 <com.jiqu.helper.view.MyScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:fresco="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@android:color/holo_red_dark">
+    android:layout_height="wrap_content"
+    android:background="@color/recommend_choice_space_color"
+    android:scrollbars="none">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@color/white">
+
             <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/adOne"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                fresco:fadeDuration="300"
                 fresco:failureImage="@mipmap/ic_launcher"
+                fresco:failureImageScaleType="fitXY"
                 fresco:placeholderImage="@mipmap/ic_launcher"
-                fresco:fadeDuration="300"/>
+                fresco:placeholderImageScaleType="fitXY" />
+
             <View
                 android:layout_width="3dp"
-                android:layout_height="match_parent"/>
+                android:layout_height="match_parent" />
+
             <com.facebook.drawee.view.SimpleDraweeView
                 android:id="@+id/adTwo"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                fresco:fadeDuration="300"
                 fresco:failureImage="@mipmap/ic_launcher"
+                fresco:failureImageScaleType="fitXY"
                 fresco:placeholderImage="@mipmap/ic_launcher"
-                fresco:fadeDuration="300"/>
+                fresco:placeholderImageScaleType="fitXY" />
         </LinearLayout>
 
         <LinearLayout
+            android:id="@+id/titleLin"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <com.jiqu.helper.view.MyImageButton
-                android:id="@+id/newGame"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"/>
-            <View
-                android:layout_width="2dp"
-                android:layout_height="match_parent"/>
-            <com.jiqu.helper.view.MyImageButton
-                android:id="@+id/artifact"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"/>
-            <View
-                android:layout_width="2dp"
-                android:layout_height="match_parent"/>
-            <com.jiqu.helper.view.MyImageButton
-                android:id="@+id/schoolgirl"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"/>
-            <View
-                android:layout_width="2dp"
-                android:layout_height="match_parent"/>
-            <com.jiqu.helper.view.MyImageButton
-                android:id="@+id/online"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"/>
-        </LinearLayout>
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"></LinearLayout>
+
+        <com.jiqu.helper.view.PullUpListView
+            android:id="@+id/listView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
     </LinearLayout>
+
 </com.jiqu.helper.view.MyScrollView>

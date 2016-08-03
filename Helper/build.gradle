@@ -38,9 +38,10 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:24.0.0'
     compile 'com.android.support:recyclerview-v7:24.0.0'
-    compile 'com.sch.rfview:AnimRefreshRecyclerView:1.0.6@aar'
+//    compile 'com.sch.rfview:AnimRefreshRecyclerView:1.0.6@aar'
     compile 'com.facebook.fresco:fresco:0.9.0+'
     compile 'com.squareup.okhttp3:okhttp:3.4.1'
     compile 'com.squareup.okio:okio:1.9.0'
     compile 'org.greenrobot:greendao:3.0.1'
+    compile project(':AnimRefreshRecyclerView')
 }

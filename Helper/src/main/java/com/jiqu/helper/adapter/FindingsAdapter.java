@@ -33,9 +33,8 @@ public class FindingsAdapter extends BaseAdapter {
     }
 
     @Override
-    public void convert(BaseHolder baseHolder, Object object) {
-        if (object != null){
-            RecommendFindingsItemInfo info = (RecommendFindingsItemInfo) object;
+    public void convert(BaseHolder baseHolder, int position) {
+            RecommendFindingsItemInfo info = (RecommendFindingsItemInfo) mDatas.get(position);
             Uri iconUri = Uri.parse(info.getIcon());
             ((SimpleDraweeView) baseHolder.getView(R.id.icon)).setImageURI(iconUri);
             ((TextView)baseHolder.getView(R.id.name)).setText(info.getApply_name());
@@ -44,6 +43,5 @@ public class FindingsAdapter extends BaseAdapter {
             ((SimpleDraweeView) baseHolder.getView(R.id.detailPic)).setImageURI(detailUri);
             ((TextView)baseHolder.getView(R.id.fromWhere)).setText(info.getRotate().getFrom());
             ((TextView)baseHolder.getView(R.id.loveText)).setText(info.getRotate().getFavorite() + Tools.getString(R.string.love_number));
-        }
     }
 }

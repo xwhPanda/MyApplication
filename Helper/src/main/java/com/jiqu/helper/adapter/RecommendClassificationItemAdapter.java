@@ -7,6 +7,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.jiqu.helper.data.RecommendClassificationInfo;
+import com.jiqu.helper.data.RecommendClassificationItemData;
 import com.jiqu.helper.holders.RecommendClassificationItemHolder;
 
 import java.util.ArrayList;
@@ -17,9 +18,9 @@ import java.util.List;
  */
 public class RecommendClassificationItemAdapter extends BaseAdapter{
     private Context context;
-    private List<RecommendClassificationInfo> list;
+    private List<RecommendClassificationItemData> list;
 
-    public RecommendClassificationItemAdapter(Context context,List<RecommendClassificationInfo> infoList){
+    public RecommendClassificationItemAdapter(Context context,List<RecommendClassificationItemData> infoList){
         this.context = context;
         list = infoList;
     }

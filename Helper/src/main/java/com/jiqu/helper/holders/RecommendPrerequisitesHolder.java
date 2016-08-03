@@ -9,7 +9,6 @@ import android.widget.TextView;
 
 import com.jiqu.helper.R;
 import com.jiqu.helper.adapter.RecommendAppAdapter;
-import com.jiqu.helper.adapter.RecommendPrerequisitesItemAdapter;
 import com.jiqu.helper.application.HelperApplication;
 import com.jiqu.helper.itemDecoration.SpaceItemDecoration;
 import com.jiqu.helper.tools.MetricsTool;

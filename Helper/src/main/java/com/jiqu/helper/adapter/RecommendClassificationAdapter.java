@@ -20,10 +20,12 @@ import java.util.List;
  */
 public class RecommendClassificationAdapter extends BaseAdapter{
     private Context context;
+    private List<String > title;
 
-    public RecommendClassificationAdapter(Context context, int viewId, List datas) {
+    public RecommendClassificationAdapter(Context context, int viewId, List datas,List<String> title) {
         super(context, viewId, datas);
         this.context = context;
+        this.title = title;
     }
 
     @Override
@@ -32,12 +34,10 @@ public class RecommendClassificationAdapter extends BaseAdapter{
     }
 
     @Override
-    public void convert(BaseHolder baseHolder, Object object) {
-        if (object != null){
-            RecommendClassificationItemData data = (RecommendClassificationItemData)object;
-            RecommendClassificationItemAdapter adapter = new RecommendClassificationItemAdapter(context,data.getCol());
-            ((TextView)baseHolder.getView(R.id.typeText)).setText(data.getName());
+    public void convert(BaseHolder baseHolder, int position) {
+            List<RecommendClassificationItemData> data = (List<RecommendClassificationItemData>) mDatas.get(position);
+            RecommendClassificationItemAdapter adapter = new RecommendClassificationItemAdapter(context,data);
+            ((TextView)baseHolder.getView(R.id.typeText)).setText(title.get(position));
             ((GridView)baseHolder.getView(R.id.classificationGridView)).setAdapter(adapter);
-        }
     }
 }

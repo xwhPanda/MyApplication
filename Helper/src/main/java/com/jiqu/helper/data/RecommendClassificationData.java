@@ -13,7 +13,8 @@ public class RecommendClassificationData implements Serializable{
      */
 
     private int status;
-    private List<RecommendClassificationItemData> data;
+    private List<String> data1;
+    private List<List<RecommendClassificationItemData>> data2;
 
     public int getStatus() {
         return status;
@@ -23,11 +24,19 @@ public class RecommendClassificationData implements Serializable{
         this.status = status;
     }
 
-    public List<RecommendClassificationItemData> getData() {
-        return data;
+    public List<String> getData1() {
+        return data1;
     }
 
-    public void setData(List<RecommendClassificationItemData> data) {
-        this.data = data;
+    public void setData1(List<String> data1) {
+        this.data1 = data1;
+    }
+
+    public List<List<RecommendClassificationItemData>> getData2() {
+        return data2;
+    }
+
+    public void setData2(List<List<RecommendClassificationItemData>> data2) {
+        this.data2 = data2;
     }
 }

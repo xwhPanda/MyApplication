@@ -14,7 +14,6 @@ public class RecommendClassificationItemData implements Serializable{
      * url :
      * name : 热门娱乐
      * intro :
-     * col : []
      */
 
     private String id;
@@ -22,7 +21,6 @@ public class RecommendClassificationItemData implements Serializable{
     private String url;
     private String name;
     private String intro;
-    private List<RecommendClassificationInfo> col;
 
     public String getId() {
         return id;
@@ -62,13 +60,5 @@ public class RecommendClassificationItemData implements Serializable{
 
     public void setIntro(String intro) {
         this.intro = intro;
-    }
-
-    public List<RecommendClassificationInfo> getCol() {
-        return col;
-    }
-
-    public void setCol(List<RecommendClassificationInfo> col) {
-        this.col = col;
     }
 }

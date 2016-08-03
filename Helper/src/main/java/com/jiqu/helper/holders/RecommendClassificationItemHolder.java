@@ -10,6 +10,7 @@ import android.widget.TextView;
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.jiqu.helper.R;
 import com.jiqu.helper.data.RecommendClassificationInfo;
+import com.jiqu.helper.data.RecommendClassificationItemData;
 import com.jiqu.helper.tools.MetricsTool;
 import com.jiqu.helper.tools.UIUtil;
 
@@ -20,7 +21,7 @@ public class RecommendClassificationItemHolder {
     public SimpleDraweeView icon;
     public TextView name;
     private View rootView;
-    private RecommendClassificationInfo data;
+    private RecommendClassificationItemData data;
 
     public RecommendClassificationItemHolder(Context context){
 
@@ -39,7 +40,7 @@ public class RecommendClassificationItemHolder {
         return  rootView;
     }
 
-    public void setData(RecommendClassificationInfo data){
+    public void setData(RecommendClassificationItemData data){
         this.data = data;
         Uri uri = Uri.parse(data.getPic());
         icon.setImageURI(uri);

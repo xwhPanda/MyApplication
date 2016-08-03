@@ -19,4 +19,8 @@
     <string name="detail_free">免费</string>
     <string name="detail_safe">安全</string>
     <string name="detail_no_ad">无广告</string>
+    <string name="newGame">新游</string>
+    <string name="artifact">神器</string>
+    <string name="schoolgirl">女生</string>
+    <string name="online">网游</string>
 </resources>

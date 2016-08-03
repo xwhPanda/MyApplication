@@ -27,6 +27,8 @@
     <declare-styleable name="MyImageButton">
         <attr name="textColorDefault" format="color"/>
         <attr name="textColorSelected" format="color"/>
+        <attr name="bgColorDefault" format="color"/>
+        <attr name="bgColorSelected" format="color"/>
         <attr name="text" format="string"/>
         <attr name="imageDefault" format="reference"/>
         <attr name="imageSelected" format="reference"/>

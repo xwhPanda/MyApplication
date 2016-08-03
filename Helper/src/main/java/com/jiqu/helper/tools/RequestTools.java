@@ -18,4 +18,8 @@ public class RequestTools {
     public static final String RCOMMEND_APP_PREREQUISITES = "http://koa.77gamebox.com/index.php/Api/Recommend/getNecessarySoft";
     /** 推荐必备游戏 **/
     public static final String RECOMMEND_GAME_PREREQUISITES = "http://koa.77gamebox.com/index.php/Api/Recommend/getNecessaryGame";
+    /** 游戏精选页广告 **/
+    public static final String GAME_CHOICE_AD = "http://koa.77gamebox.com/index.php/Api/Game/getGameSelect";
+    /** 游戏精选游戏 **/
+    public static final String GAME_CHOICE_BASE_URL = "http://koa.77gamebox.com/index.php/Api/Game/getGameList?columnId=";
 }
