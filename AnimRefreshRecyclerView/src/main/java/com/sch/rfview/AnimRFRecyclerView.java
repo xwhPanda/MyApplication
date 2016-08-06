@@ -19,8 +19,6 @@ import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.sch.rfview.decoration.DividerGridItemDecoration;
-import com.sch.rfview.decoration.DividerItemDecoration;
 import com.sch.rfview.listener.OverScrollListener;
 import com.sch.rfview.manager.AnimRFGridLayoutManager;
 import com.sch.rfview.manager.AnimRFLinearLayoutManager;
@@ -63,6 +61,7 @@ public class AnimRFRecyclerView extends RecyclerView implements Runnable {
     private AnimView rfAnimView; // 正在刷新状态的View
     private int progressColor = Color.WHITE;
     private int bgColor = Color.WHITE; // 刷新View的颜色
+    private AdapterDataObserver dataObserver = new DataObserver();
 
     private boolean isEnable = true;
 
@@ -253,17 +252,19 @@ public class AnimRFRecyclerView extends RecyclerView implements Runnable {
             text.setText("正在加载...");
             footerLayout.addView(text);
         }
-        // 使用包装了头部和脚部的适配器
-        adapter = new WrapAdapter(mHeaderViews, mFootViews, adapter);
-        super.setAdapter(adapter);
-        // 根据是否有头部/脚部视图选择适配器
-        // if (mHeaderViews.isEmpty() && mFootViews.isEmpty()) {
-        //     super.setAdapter(adapter);
-        // } else {
-        //     adapter = new WrapAdapter(mHeaderViews, mFootViews, adapter);
-        //     super.setAdapter(adapter);
-        // }
+         //使用包装了头部和脚部的适配器
+//        adapter = new WrapAdapter(mHeaderViews, mFootViews, adapter);
+        //根据是否有头部/脚部视图选择适配器
+        if (mHeaderViews.isEmpty() && mFootViews.isEmpty()) {
+            super.setAdapter(adapter);
+        } else {
+            adapter = new WrapAdapter(mHeaderViews, mFootViews, adapter);
+            super.setAdapter(adapter);
+        }
         mAdapter = adapter;
+        mAdapter.registerAdapterDataObserver(dataObserver);
+        dataObserver.onChanged();
+//        super.setAdapter(adapter);
     }
 
     @Override
@@ -346,7 +347,6 @@ public class AnimRFRecyclerView extends RecyclerView implements Runnable {
         }
 
         updateHeaderAlpha();
-
     }
 
     @Override
@@ -407,6 +407,8 @@ public class AnimRFRecyclerView extends RecyclerView implements Runnable {
                     headerImageHint();
                     return true;
                 }
+                break;
+            case MotionEvent.ACTION_MOVE:
                 break;
         }
 
@@ -650,6 +652,38 @@ public class AnimRFRecyclerView extends RecyclerView implements Runnable {
             public HeaderViewHolder(View itemView) {
                 super(itemView);
             }
+        }
+    }
+
+    class DataObserver extends AdapterDataObserver{
+
+        @Override
+        public void onChanged() {
+        }
+
+        @Override
+        public void onItemRangeChanged(int positionStart, int itemCount) {
+            mAdapter.notifyItemRangeChanged(positionStart,itemCount);
+        }
+
+        @Override
+        public void onItemRangeChanged(int positionStart, int itemCount, Object payload) {
+            mAdapter.notifyItemRangeChanged(positionStart,itemCount,payload);
+        }
+
+        @Override
+        public void onItemRangeInserted(int positionStart, int itemCount) {
+            mAdapter.notifyItemRangeInserted(positionStart,itemCount);
+        }
+
+        @Override
+        public void onItemRangeMoved(int fromPosition, int toPosition, int itemCount) {
+            mAdapter.notifyItemRangeRemoved(fromPosition,toPosition);
+        }
+
+        @Override
+        public void onItemRangeRemoved(int positionStart, int itemCount) {
+            mAdapter.notifyItemRangeRemoved(positionStart,itemCount);
         }
     }
 

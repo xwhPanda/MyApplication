@@ -7,8 +7,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.jiqu.helper.R;
 import com.jiqu.helper.application.HelperApplication;
 import com.jiqu.helper.holders.BaseHolder;
+import com.jiqu.helper.holders.FootHoler;
 import com.jiqu.helper.interfaces.RecycleViewOnItemClickListener;
 
 import java.util.List;
@@ -17,6 +19,9 @@ import java.util.List;
  * Created by xiongweihua on 2016/7/22.
  */
 public abstract class BaseAdapter<T> extends RecyclerView.Adapter<BaseHolder>{
+    private final int TYPE_HEAD = 1;
+    private final int TYPE_CONTENT = 2;
+    private final int TYPE_ROOT = 3;
     private Context context;
     public List<T> mDatas;
     private int mViewId;
@@ -30,10 +35,19 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter<BaseHolder>{
         adapter = this;
     }
 
+    public void setmDatas(List<T> datas){
+        if (mDatas != null){
+            mDatas = datas;
+            notifyDataSetChanged();
+        }
+    }
+
     @Override
     public BaseHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        BaseHolder holder = null;
         View view = LayoutInflater.from(HelperApplication.context).inflate(mViewId,parent,false);
-        return getHolder(view);
+        holder = getHolder(view);
+        return holder;
     }
 
     @Override
@@ -46,23 +60,22 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter<BaseHolder>{
 
     @Override
     public void onBindViewHolder(BaseHolder holder, final int position) {
-        convert(holder,position);
-        if (listener != null){
-            holder.getmContentView().setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    listener.onItemClick(view,adapter,position);
-                }
-            });
-        }
+                convert(holder,position);
+                if (listener != null){
+                    holder.getmContentView().setOnClickListener(new View.OnClickListener() {
+                        @Override
+                        public void onClick(View view) {
+                            listener.onItemClick(view,adapter,position);
+                        }
+                    });
+            }
     }
 
     @Override
     public int getItemCount() {
-        if (mDatas == null)
-            return 0;
         return mDatas.size();
     }
+
 
     public void setListener(RecycleViewOnItemClickListener listener){
         this.listener = listener;
