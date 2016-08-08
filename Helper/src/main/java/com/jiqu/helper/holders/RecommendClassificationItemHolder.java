@@ -4,12 +4,10 @@ import android.content.Context;
 import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.facebook.drawee.view.SimpleDraweeView;
 import com.jiqu.helper.R;
-import com.jiqu.helper.data.RecommendClassificationInfo;
 import com.jiqu.helper.data.RecommendClassificationItemData;
 import com.jiqu.helper.tools.MetricsTool;
 import com.jiqu.helper.tools.UIUtil;

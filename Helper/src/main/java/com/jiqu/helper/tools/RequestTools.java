@@ -22,4 +22,6 @@ public class RequestTools {
     public static final String GAME_CHOICE_AD = "http://koa.77gamebox.com/index.php/Api/Game/getGameSelect";
     /** 游戏精选游戏 **/
     public static final String GAME_CHOICE_BASE_URL = "http://koa.77gamebox.com/index.php/Api/Game/getGameList?columnId=";
+    /** 游戏分类 **/
+    public static final String GAME_CLASSIFICATION = "http://koa.77gamebox.com/index.php/Api/Game/getColumn";
 }

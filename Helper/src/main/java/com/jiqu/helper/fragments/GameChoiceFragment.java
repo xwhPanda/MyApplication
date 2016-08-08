@@ -17,7 +17,7 @@ import com.jiqu.helper.data.GameChoiceData;
 import com.jiqu.helper.data.GameChoiceTopData;
 import com.jiqu.helper.data.GameInfo;
 import com.jiqu.helper.data.RecommendChoiceAdInfo;
-import com.jiqu.helper.data.RecommendClassificationInfo;
+import com.jiqu.helper.data.RecommendClassificationItemData;
 import com.jiqu.helper.interfaces.GetDataCallback;
 import com.jiqu.helper.itemDecoration.SpaceItemDecoration;
 import com.jiqu.helper.okhttp.OkHttpManager;
@@ -25,6 +25,7 @@ import com.jiqu.helper.okhttp.OkHttpRequest;
 import com.jiqu.helper.tools.Constans;
 import com.jiqu.helper.tools.MetricsTool;
 import com.jiqu.helper.tools.RequestTools;
+import com.jiqu.helper.tools.Tools;
 import com.jiqu.helper.tools.UIUtil;
 import com.jiqu.helper.view.MyImageButton;
 import com.jiqu.helper.view.MyRecycleView;
@@ -47,8 +48,9 @@ public class GameChoiceFragment extends BaseFragment implements View.OnClickList
     private NestedScrollingLayout scrollingLayout;
     private RecommendAppAdapter appAdapter;
     private List<List<GameInfo>> gameInfoList = new ArrayList<>();
+    private int[] indexList;
     private List<GameInfo> gameInfos = new ArrayList<>();
-    private List<RecommendClassificationInfo> classificationInfoList = new ArrayList<>();
+    private List<RecommendClassificationItemData> classificationInfoList = new ArrayList<>();
     private int currentIndex = 0;
     private String loadUrl = "";
 
@@ -73,6 +75,7 @@ public class GameChoiceFragment extends BaseFragment implements View.OnClickList
         listView.setHasFixedSize(true);
         listView.addItemDecoration(new SpaceItemDecoration(2,0));
         listView.setAdapter(appAdapter);
+        listView.setOnLoadDataListener(this);
     }
 
     @Override
@@ -108,12 +111,13 @@ public class GameChoiceFragment extends BaseFragment implements View.OnClickList
     }
 
     /** 设置分类 **/
-    private void setClassification(List<RecommendClassificationInfo> data){
+    private void setClassification(List<RecommendClassificationItemData> data){
         classificationInfoList.clear();
         classificationInfoList.addAll(data);
         int size = data.size();
+        indexList = new int[size];
         for (int i = 0;i < size;i++){
-            RecommendClassificationInfo info = data.get(i);
+            RecommendClassificationItemData info = data.get(i);
             MyImageButton button = new MyImageButton(mActivity);
             LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(0, (int)(MetricsTool.Rx * 150), 1);
             button.setLayoutParams(layoutParams);
@@ -134,6 +138,7 @@ public class GameChoiceFragment extends BaseFragment implements View.OnClickList
 
             List<GameInfo> infoList = new ArrayList<>();
             gameInfoList.add(infoList);
+            indexList[i] = 1;
         }
     }
 
@@ -142,20 +147,24 @@ public class GameChoiceFragment extends BaseFragment implements View.OnClickList
         OkHttpManager.getInstance().execute(new OkHttpRequest(loadUrl, "gameChoice", null, null).build(), GameChoiceData.class, new GetDataCallback() {
             @Override
             public void onFailed(Call call, IOException e) {
-
+                listView.loadComplete();
+                Tools.showToast(R.string.load_failed);
             }
 
             @Override
             public void onSucceed(Call call, Object data) {
                 GameChoiceData gameChoiceData = (GameChoiceData) data;
                 if (gameChoiceData != null && gameChoiceData.getStatus() == 1){
+                    indexList[index]++;
                     gameInfoList.get(index).addAll(gameChoiceData.getData());
                     gameInfos.clear();
                     gameInfos.addAll(gameInfoList.get(index));
                     appAdapter.notifyDataSetChanged();
                 }else if (gameChoiceData != null && gameChoiceData.getStatus() == 0){
                     /** 没有更多数据了 **/
+                    Tools.showToast(R.string.load_no_more);
                 }
+                listView.loadComplete();
             }
         });
     }
@@ -169,8 +178,6 @@ public class GameChoiceFragment extends BaseFragment implements View.OnClickList
             if (currentIndex != index){
                 OkHttpManager.getInstance().cancelByTag("gameChoice");
                 listView.cancelLoad();
-                gameInfos.clear();
-                appAdapter.notifyDataSetChanged();
                 int childSize = titleLin.getChildCount();
                 for (int i = 0;i < childSize;i++){
                     if (titleLin.getChildAt(i) instanceof MyImageButton){
@@ -182,9 +189,14 @@ public class GameChoiceFragment extends BaseFragment implements View.OnClickList
                     }
                 }
                 currentIndex = index;
+                gameInfos.clear();
+                gameInfos.addAll(gameInfoList.get(index));
+                appAdapter.notifyDataSetChanged();
                 loadUrl = RequestTools.GAME_CHOICE_BASE_URL
                         + classificationInfoList.get(index).getId() + "&numPerPage=" + Constans.NUMBER_PER_PAGE;
-                loadData(loadUrl,index);
+                if (gameInfoList.get(index).size() == 0){
+                    loadData(loadUrl,index);
+                }
             }
         }
     }
@@ -194,7 +206,7 @@ public class GameChoiceFragment extends BaseFragment implements View.OnClickList
         switch (currentIndex){
             case 0:
                 loadUrl = RequestTools.GAME_CHOICE_BASE_URL
-                        + classificationInfoList.get(0).getId() + "&numPerPage=" + Constans.NUMBER_PER_PAGE;
+                        + classificationInfoList.get(0).getId() + "&numPerPage=" + Constans.NUMBER_PER_PAGE + "&pageNum=" + indexList[currentIndex];
                 loadData(loadUrl,currentIndex);
                 break;
         }

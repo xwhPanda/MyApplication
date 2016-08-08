@@ -9,7 +9,6 @@ import com.jiqu.helper.BaseFragment;
 import com.jiqu.helper.R;
 import com.jiqu.helper.adapter.RecommendClassificationAdapter;
 import com.jiqu.helper.data.RecommendClassificationData;
-import com.jiqu.helper.data.RecommendClassificationInfo;
 import com.jiqu.helper.data.RecommendClassificationItemData;
 import com.jiqu.helper.interfaces.GetDataCallback;
 import com.jiqu.helper.okhttp.OkHttpManager;
@@ -54,7 +53,6 @@ public class HomeClassificationFragment extends BaseFragment implements AnimRFRe
         classificationRecycleView.setLayoutManager(manager);
         classificationRecycleView.setHasFixedSize(true);
         classificationRecycleView.setLoadDataListener(this);
-        classificationRecycleView.addFootView(new TextView(mActivity));
         classificationRecycleView.setAdapter(adapter);
 
     }

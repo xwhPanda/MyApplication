@@ -1,5 +1,7 @@
 package com.jiqu.helper.tools;
 
+import android.widget.Toast;
+
 import com.jiqu.helper.application.HelperApplication;
 
 /**
@@ -13,5 +15,13 @@ public class Tools {
 
     public static String getString(int string){
         return  HelperApplication.context.getResources().getString(string);
+    }
+
+    public static void showToast(int stringId){
+        Toast.makeText(HelperApplication.context,stringId,Toast.LENGTH_SHORT).show();
+    }
+
+    public static void showToast(String string){
+        Toast.makeText(HelperApplication.context,string,Toast.LENGTH_SHORT).show();
     }
 }
