@@ -69,7 +69,7 @@ public class GameClassificationFragment extends BaseFragment implements MyRecycl
         OkHttpManager.getInstance().execute(new OkHttpRequest(RequestTools.GAME_CLASSIFICATION, OKHTTP_TAG, null, null).build(),RecommendClassificationData.class , new GetDataCallback() {
             @Override
             public void onFailed(Call call, IOException e) {
-                Tools.showToast(R.string.load_failed);
+                Tools.showToast(mActivity,R.string.load_failed);
             }
 
             @Override
@@ -82,7 +82,7 @@ public class GameClassificationFragment extends BaseFragment implements MyRecycl
                     classificationList.clear();
                     classificationList.addAll(classificationData.getData2());
                 }else if(classificationData.getStatus() == 0){
-                    Tools.showToast(R.string.load_no_more);
+                    Tools.showToast(mActivity,R.string.load_no_more);
                 }
             }
         });

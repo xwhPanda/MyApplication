@@ -128,8 +128,9 @@ public class GameChoiceFragment extends BaseFragment implements View.OnClickList
             button.setImage(info.getPic());
             if (i != 0){
                 TextView spaceView = new TextView(mActivity);
-                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams((int)(MetricsTool.Rx * 2), ViewGroup.LayoutParams.MATCH_PARENT);
+                LinearLayout.LayoutParams params = new LinearLayout.LayoutParams((int)(MetricsTool.Rx * 2), (int)(MetricsTool.Rx * 75));
                 spaceView.setLayoutParams(params);
+                spaceView.setBackgroundColor(Tools.getColor(R.color.recommend_choice_space_color));
                 titleLin.addView(spaceView);
             }else {
                 button.setSelected();
@@ -148,7 +149,7 @@ public class GameChoiceFragment extends BaseFragment implements View.OnClickList
             @Override
             public void onFailed(Call call, IOException e) {
                 listView.loadComplete();
-                Tools.showToast(R.string.load_failed);
+                Tools.showToast(mActivity,R.string.load_failed);
             }
 
             @Override
@@ -162,7 +163,7 @@ public class GameChoiceFragment extends BaseFragment implements View.OnClickList
                     appAdapter.notifyDataSetChanged();
                 }else if (gameChoiceData != null && gameChoiceData.getStatus() == 0){
                     /** 没有更多数据了 **/
-                    Tools.showToast(R.string.load_no_more);
+                    Tools.showToast(mActivity,R.string.load_no_more);
                 }
                 listView.loadComplete();
             }

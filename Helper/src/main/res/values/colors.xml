@@ -22,4 +22,5 @@
     <color name="from_where_color">#40c6f2</color>
     <color name="detail_name_color">#e1e401</color>
     <color name="game_choice_btn_selected_color">#e6edfd</color>
+    <color name="app_choice_first_publish_item_name_color">#5eaff4</color>
 </resources>

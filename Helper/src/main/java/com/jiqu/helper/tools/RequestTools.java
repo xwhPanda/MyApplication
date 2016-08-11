@@ -24,4 +24,14 @@ public class RequestTools {
     public static final String GAME_CHOICE_BASE_URL = "http://koa.77gamebox.com/index.php/Api/Game/getGameList?columnId=";
     /** 游戏分类 **/
     public static final String GAME_CLASSIFICATION = "http://koa.77gamebox.com/index.php/Api/Game/getColumn";
+    /** 游戏详情 **/
+    public static final String GAME_DETAIL = "http://koa.77gamebox.com/index.php/Api/InfoDetail/getGame?id=";
+    /** 应用详情 **/
+    public static final String APP_DETAIL = "http://koa.77gamebox.com/index.php/Api/InfoDetail/getApply?id=";
+    /** 游戏排行列表 **/
+    public static final String GAME_RANKING_LIST = "http://koa.77gamebox.com/index.php/Api/Game/getGameRank";
+    /** 游戏排行数据 **/
+    public static final String GAME_LIST = "http://koa.77gamebox.com/index.php/Api/Game/getGameList?columnId=";
+    /** 应用精选 **/
+    public static final String APP_CHOICE = "http://koa.77gamebox.com/index.php/Api/Apply/getApplySelect";
 }

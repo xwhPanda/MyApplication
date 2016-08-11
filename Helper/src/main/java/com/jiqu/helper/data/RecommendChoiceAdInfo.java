@@ -1,9 +1,11 @@
 package com.jiqu.helper.data;
 
+import java.io.Serializable;
+
 /**
  * Created by xiongweihua on 2016/7/26.
  */
-public class RecommendChoiceAdInfo {
+public class RecommendChoiceAdInfo implements Serializable{
 
     /**
      * url : http://koi.77gamebox.com/index.php/Art/News/show/id/23.html

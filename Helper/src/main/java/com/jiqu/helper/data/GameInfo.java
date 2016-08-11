@@ -1,9 +1,12 @@
 package com.jiqu.helper.data;
 
+import java.io.Serializable;
+import java.util.List;
+
 /**
  * Created by xiongweihua on 2016/7/25.
  */
-public class GameInfo {
+public class GameInfo implements Serializable{
 
     private String id;
     private String apply_name;
@@ -23,6 +26,9 @@ public class GameInfo {
     private String gift_id;
     private String siteID;
     private String statisticsID;
+    private List<String> pic;
+    private String label;
+    private String intro;
 
     public String getId() {
         return id;
@@ -164,7 +170,32 @@ public class GameInfo {
         return statisticsID;
     }
 
+    public List<String> getPic() {
+        return pic;
+    }
+
+    public void setPic(List<String> pic) {
+        this.pic = pic;
+    }
+
     public void setStatisticsID(String statisticsID) {
         this.statisticsID = statisticsID;
+
+    }
+
+    public String getLabel() {
+        return label;
+    }
+
+    public void setLabel(String label) {
+        this.label = label;
+    }
+
+    public String getIntro() {
+        return intro;
+    }
+
+    public void setIntro(String intro) {
+        this.intro = intro;
     }
 }

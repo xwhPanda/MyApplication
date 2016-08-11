@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:pager="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/holo_red_dark">
+    android:background="@color/recommend_choice_space_color">
+
+    <com.jiqu.helper.view.FragmentAndViewPager
+        android:id="@+id/fragmentAndViewPager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        pager:backgroundColor="@color/topBlue"
+        pager:afterBackgroundColor="@color/topSelectedBlue">
+    </com.jiqu.helper.view.FragmentAndViewPager>
 
 </RelativeLayout>

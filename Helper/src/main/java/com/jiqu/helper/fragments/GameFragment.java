@@ -19,7 +19,6 @@ public class GameFragment extends BaseFragment{
     private GameChoiceFragment gameChoiceFragment;
     private GameClassificationFragment gameClassificationFragment;
     private GameRankingFragment gameRankingFragment;
-    private GamePackageFragment gamePackageFragment;
     private List<Fragment> fragmentList = new ArrayList<>();
 
     @Override
@@ -33,11 +32,9 @@ public class GameFragment extends BaseFragment{
         gameChoiceFragment = new GameChoiceFragment();
         gameClassificationFragment = new GameClassificationFragment();
         gameRankingFragment = new GameRankingFragment();
-        gamePackageFragment = new GamePackageFragment();
         fragmentList.add(gameChoiceFragment);
         fragmentList.add(gameClassificationFragment);
         fragmentList.add(gameRankingFragment);
-        fragmentList.add(gamePackageFragment);
 
         gameViewPager = (FragmentAndViewPager) view.findViewById(R.id.gameViewPager);
     }
@@ -48,9 +45,9 @@ public class GameFragment extends BaseFragment{
 
     @Override
     public void initData() {
-        gameViewPager.setFragmentManager(getChildFragmentManager());
         gameViewPager.setFragmentList(fragmentList);
-        String[] tabs = new String[]{"精选","分类","排行","礼包"};
+        gameViewPager.setFragmentManager(getChildFragmentManager());
+        String[] tabs = new String[]{"精选","分类","排行"};
         gameViewPager.setTab(tabs);
         gameViewPager.initData();
     }

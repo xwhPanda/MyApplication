@@ -27,6 +27,7 @@ import com.jiqu.helper.itemDecoration.SpaceItemDecoration;
 import com.jiqu.helper.okhttp.OkHttpManager;
 import com.jiqu.helper.okhttp.OkHttpRequest;
 import com.jiqu.helper.tools.RequestTools;
+import com.jiqu.helper.tools.Tools;
 import com.jiqu.helper.tools.UIUtil;
 import com.jiqu.helper.view.AdViewPager;
 import com.jiqu.helper.view.LoadMoreView;
@@ -167,7 +168,22 @@ public class HomeChoiceFragment extends BaseFragment implements AnimRFRecyclerVi
     @Override
     public void onItemClick(View view, BaseAdapter baseAdapter,int position) {
         if (baseAdapter instanceof RecommendAppAdapter){
-            startActivity(new Intent(mActivity, DetailActivity.class));
+            Intent intent = new Intent(mActivity,DetailActivity.class);
+            if (Tools.getType(recommendAppList.get(position).getType()) == -1){
+                return;
+            }else {
+                switch (Tools.getType(recommendAppList.get(position).getType())){
+                    case 0:
+                        intent.putExtra("type",0);
+                        break;
+                    case 1:
+                        intent.putExtra("type",1);
+                        break;
+                }
+            }
+            intent.putExtra("id",recommendAppList.get(position).getId());
+            intent.putExtra("name",recommendAppList.get(position).getApply_name());
+            startActivity(intent);
         }else if(baseAdapter instanceof RecommendRecycleAdapter){
 
         }

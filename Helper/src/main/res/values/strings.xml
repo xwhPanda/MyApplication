@@ -25,4 +25,9 @@
     <string name="online">网游</string>
     <string name="load_no_more">到底了 !</string>
     <string name="load_failed">加载数据失败</string>
+    <string name="description">应用描述</string>
+    <string name="app_choice_title">优质首发抢先看</string>
+    <string name="more">更多</string>
+    <string name="app_choice_list_title">时尚生活潮流汇</string>
+
 </resources>

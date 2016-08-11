@@ -79,6 +79,22 @@ public class FragmentAndViewPager extends RelativeLayout implements ViewPager.On
         UIUtil.setViewHeight(topTabLin, MetricsTool.Rx * 74);
     }
 
+    public void setTabLinHeight(int height){
+        UIUtil.setViewHeight(topTabLin,MetricsTool.Rx * height);
+    }
+
+    public void setAfterBackgroundColor(int color){
+        afterBackgroundColor = color;
+    }
+
+    public void setBackgroundColor(int color){
+        backgroundColor = color;
+    }
+
+    public void setOffscreenPageLimit(int number){
+        viewPager.setOffscreenPageLimit(number);
+    }
+
     /** 设置fragment列表 **/
     public void setFragmentList(List<Fragment> fragmentList){
         this.fragmentList = fragmentList;
@@ -98,6 +114,7 @@ public class FragmentAndViewPager extends RelativeLayout implements ViewPager.On
 
     public void setTab(String[] tabs){
         if (hasTabStrip){
+            imageView.setBackgroundColor(tabStripColor);
             UIUtil.setViewWidth(imageView,MetricsTool.width / tabs.length);
         }else{
             imageView.setVisibility(GONE);
@@ -131,9 +148,11 @@ public class FragmentAndViewPager extends RelativeLayout implements ViewPager.On
     public void onPageSelected(int position) {
         for (int i = 0;i < tabViewList.size();i++){
             if (i == position){
-               tabViewList.get(i).setBackgroundColor(afterBackgroundColor);
+                tabViewList.get(i).setBackgroundColor(afterBackgroundColor);
+                tabViewList.get(i).setTextColor(afterColor);
             }else {
                 tabViewList.get(i).setBackgroundColor(backgroundColor);
+                tabViewList.get(i).setTextColor(beforColor);
             }
         }
         if (hasTabStrip){

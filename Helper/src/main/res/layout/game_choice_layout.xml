@@ -43,7 +43,9 @@
         android:id="@+id/titleLin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="@color/white">
     </LinearLayout>
 
     <com.jiqu.helper.view.MyRecycleView
