@@ -23,4 +23,5 @@
     <color name="detail_name_color">#e1e401</color>
     <color name="game_choice_btn_selected_color">#e6edfd</color>
     <color name="app_choice_first_publish_item_name_color">#5eaff4</color>
+    <color name="mine_login_time_color">#7efefd</color>
 </resources>

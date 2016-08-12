@@ -12,10 +12,12 @@ import com.jiqu.helper.fragments.MineFragment;
 import com.jiqu.helper.fragments.RecommendFragment;
 import com.jiqu.helper.fragments.ToolFragment;
 import com.jiqu.helper.interfaces.GetDataCallback;
+import com.jiqu.helper.interfaces.OnChangTopViewVisible;
 import com.jiqu.helper.okhttp.OkHttpManager;
 import com.jiqu.helper.okhttp.OkHttpRequest;
 import com.jiqu.helper.tools.RequestTools;
 import com.jiqu.helper.view.HomeBottomView;
+import com.jiqu.helper.view.HomeTopView;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -24,8 +26,9 @@ import java.util.List;
 import okhttp3.Call;
 import okhttp3.Response;
 
-public class MainActivity extends BaseFragmentActivity {
+public class MainActivity extends BaseFragmentActivity implements OnChangTopViewVisible {
     private HomeBottomView homeBottomView;
+    private HomeTopView topView;
     private FragmentManager mFragmentManager;
     private RecommendFragment recommendFragment;
     private GameFragment gameFragment;
@@ -59,7 +62,10 @@ public class MainActivity extends BaseFragmentActivity {
 
     @Override
     public void initView() {
+        topView = (HomeTopView) findViewById(R.id.topView);
         homeBottomView = (HomeBottomView) findViewById(R.id.bottomView);
+
+        homeBottomView.setOnChangTopViewVisible(this);
     }
 
     @Override
@@ -76,5 +82,10 @@ public class MainActivity extends BaseFragmentActivity {
         transaction.add(R.id.fragmentContainer,toolFragment);
         transaction.hide(toolFragment);
         transaction.commit();
+    }
+
+    @Override
+    public void onChangeTopViewVisible(int visible) {
+        topView.setVisibility(visible);
     }
 }

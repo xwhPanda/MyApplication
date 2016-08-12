@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.RelativeLayout;
 
 import com.jiqu.helper.R;
+import com.jiqu.helper.interfaces.OnChangTopViewVisible;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +31,7 @@ public class HomeBottomView extends RelativeLayout implements View.OnClickListen
     private int currentIndex = 0;
     private List<Fragment> fragments;
     private FragmentManager fragmentManager;
+    private OnChangTopViewVisible onChangTopViewVisible;
 
     public HomeBottomView(Context context) {
         super(context);
@@ -65,6 +67,10 @@ public class HomeBottomView extends RelativeLayout implements View.OnClickListen
         toolItem.setOnClickListener(this);
 
         initData();
+    }
+
+    public void setOnChangTopViewVisible(OnChangTopViewVisible onChangTopViewVisible){
+        this.onChangTopViewVisible = onChangTopViewVisible;
     }
 
     /** 设置fragments **/
@@ -151,6 +157,13 @@ public class HomeBottomView extends RelativeLayout implements View.OnClickListen
     }
 
     private void clickEvent(HomeBottomItem item,int lastIndex,int index){
+        if (onChangTopViewVisible != null){
+            if (index == 3 || index == 4){
+                onChangTopViewVisible.onChangeTopViewVisible(GONE);
+            }else {
+                onChangTopViewVisible.onChangeTopViewVisible(VISIBLE);
+            }
+        }
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         if (currentIndex != index){
             transaction.hide(fragments.get(lastIndex));

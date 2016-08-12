@@ -34,4 +34,12 @@ public class RequestTools {
     public static final String GAME_LIST = "http://koa.77gamebox.com/index.php/Api/Game/getGameList?columnId=";
     /** 应用精选 **/
     public static final String APP_CHOICE = "http://koa.77gamebox.com/index.php/Api/Apply/getApplySelect";
+    /** 应用分类 **/
+    public static final String APP_CLASSIFICATION = "http://koa.77gamebox.com/index.php/Api/Apply/getColumn";
+    /** 应用分类 **/
+    public static final String APP_RANKING = "http://koa.77gamebox.com/index.php/Api/Apply/getApply?columnId=25";
+    /** 应用新锐**/
+    public static final String APP_NEW_APPLICATION = "http://koa.77gamebox.com/index.php/Api/Apply/getApply?columnId=26";
+    /** 我的页面 **/
+    public static final String MINE_CLASSIFICATION = "http://koa.77gamebox.com/index.php/Api/My/getMyData";
 }
