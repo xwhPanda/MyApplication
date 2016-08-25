@@ -1,13 +1,21 @@
 package com.jiqu.helper.fragments;
 
+import android.content.Intent;
 import android.support.v7.widget.GridLayoutManager;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.jiqu.helper.BaseFragment;
 import com.jiqu.helper.R;
+import com.jiqu.helper.activity.AccountInfoActivity;
+import com.jiqu.helper.activity.RecommendActivity;
 import com.jiqu.helper.adapter.RecommendClassificationItemAdapter;
 import com.jiqu.helper.data.MineData;
 import com.jiqu.helper.data.RecommendClassificationItemData;
@@ -29,7 +37,7 @@ import okhttp3.Call;
 /**
  * Created by xiongweihua on 2016/7/5.
  */
-public class MineFragment extends BaseFragment{
+public class MineFragment extends BaseFragment implements AdapterView.OnItemClickListener,View.OnClickListener{
     private final String OKHTTP_TAG = "MineFragment";
     private TextView appName;
     private Button message;
@@ -55,6 +63,7 @@ public class MineFragment extends BaseFragment{
 
         gridView.addHeaderView(headView);
         gridView.setAdapter(adapter);
+        gridView.setOnItemClickListener(this);
     }
 
     private void initHeadView(){
@@ -65,7 +74,7 @@ public class MineFragment extends BaseFragment{
         lastLoginTime = (TextView) headView.findViewById(R.id.lastLoginTime);
         account = (TextView) headView.findViewById(R.id.account);
 
-        accountImg.setImageResource(R.color.white);
+        accountImg.setOnClickListener(this);
     }
 
     @Override
@@ -96,5 +105,35 @@ public class MineFragment extends BaseFragment{
                 }
             }
         });
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        String url = "";
+        String type = "";
+        String idValue = infoList.get(position - gridView.getNumColumns()).getId();
+        if ("27".equals(idValue)){
+            url = RequestTools.MINE_GAME_RECOMMEND;
+            type = "27";
+        }else if ("29".equals(idValue)){
+            url = RequestTools.MINE_APP_RECOMMEND;
+            type = "29";
+        }else if("32".equals(idValue)){
+            type = "32";
+        }
+        if (!TextUtils.isEmpty(type)){
+            Intent intent = new Intent(mActivity, RecommendActivity.class);
+            intent.putExtra("url",url);
+            intent.putExtra("type",type);
+            intent.putExtra("title",infoList.get(position - gridView.getNumColumns()).getName());
+            startActivity(intent);
+        }
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v.getId() == R.id.accountImg){
+            startActivity(new Intent(mActivity, AccountInfoActivity.class));
+        }
     }
 }

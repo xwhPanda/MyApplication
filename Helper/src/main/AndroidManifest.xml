@@ -24,6 +24,18 @@
 
         <activity android:name=".activity.DetailActivity"
             android:screenOrientation="portrait"></activity>
+        <activity android:name=".activity.RecommendActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".activity.UninstallActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".activity.ClearCacheActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".activity.SearchActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".activity.AccountInfoActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".activity.RegisterActivity"
+            android:screenOrientation="portrait"></activity>
     </application>
 
 </manifest>

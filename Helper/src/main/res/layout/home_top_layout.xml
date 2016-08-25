@@ -33,6 +33,7 @@
                 android:text="搜索"
                 android:gravity="center_vertical"
                 android:layout_centerVertical="true"
+                android:clickable="true"
                 android:background="@color/transparent"/>
 
             <Button

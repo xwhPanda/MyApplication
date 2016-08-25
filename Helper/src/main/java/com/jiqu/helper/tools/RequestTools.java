@@ -42,4 +42,24 @@ public class RequestTools {
     public static final String APP_NEW_APPLICATION = "http://koa.77gamebox.com/index.php/Api/Apply/getApply?columnId=26";
     /** 我的页面 **/
     public static final String MINE_CLASSIFICATION = "http://koa.77gamebox.com/index.php/Api/My/getMyData";
+    /** 我的页面，游戏推荐 **/
+    public static final String MINE_GAME_RECOMMEND = "http://koa.77gamebox.com/index.php/Api/My/getGameColumn";
+    /** 游戏推荐base **/
+    public static final String MINE_GAME_RECOMMEND_BASE = "http://koa.77gamebox.com/index.php/Api/My/getGameByColumn?columnId=";
+    /** 我的页面，应用推荐 **/
+    public static final String MINE_APP_RECOMMEND = "http://koa.77gamebox.com/index.php/Api/My/getApplyColumn";
+    /** 应用推荐base **/
+    public static final String MINE_APP_RECOMMEND_BASE = "http://koa.77gamebox.com/index.php/Api/My/getApplyByColumn?columnId=";
+    /** 我的页面，猜你喜欢 **/
+    public static final String MINE_GUESS_YOU_LIKE = "http://koa.77gamebox.com/index.php/Api/My/getYourLike";
+    /** 应用详情，评论 **/
+    public static final String APP_DETAIL_COMMENT = "http://koa.77gamebox.com/index.php/Api/Apply/getComments?aid=";
+    /** 应用详情，相关 **/
+    public static final String APP_DETAIL_CORRELATION = "http://koa.77gamebox.com/index.php/Api/Apply/getRel?aid=";
+    /** 搜索 **/
+    public static final String SEARCH = "http://koi.77gamebox.com/index.php/Api/Recommend/getSearch";
+    /** 根据内容搜索 **/
+    public static final String SEARCH_DATA = "http://koi.77gamebox.com/index.php/Api/Recommend/getBySearch?search=";
+    /** 用户注册 **/
+    public static final String REGISTER_ACCOUNT = "http://koa.77gamebox.com/index.php/Api/User/register";
 }

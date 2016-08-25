@@ -1,30 +1,24 @@
 package com.jiqu.helper;
 
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
-import android.util.Log;
+import android.view.View;
 
-import com.jiqu.helper.data.RecommendData;
+import com.jiqu.helper.activity.RegisterActivity;
+import com.jiqu.helper.activity.SearchActivity;
 import com.jiqu.helper.fragments.AppFragment;
 import com.jiqu.helper.fragments.GameFragment;
 import com.jiqu.helper.fragments.MineFragment;
 import com.jiqu.helper.fragments.RecommendFragment;
 import com.jiqu.helper.fragments.ToolFragment;
-import com.jiqu.helper.interfaces.GetDataCallback;
 import com.jiqu.helper.interfaces.OnChangTopViewVisible;
-import com.jiqu.helper.okhttp.OkHttpManager;
-import com.jiqu.helper.okhttp.OkHttpRequest;
-import com.jiqu.helper.tools.RequestTools;
 import com.jiqu.helper.view.HomeBottomView;
 import com.jiqu.helper.view.HomeTopView;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import okhttp3.Call;
-import okhttp3.Response;
 
 public class MainActivity extends BaseFragmentActivity implements OnChangTopViewVisible {
     private HomeBottomView homeBottomView;
@@ -66,6 +60,20 @@ public class MainActivity extends BaseFragmentActivity implements OnChangTopView
         homeBottomView = (HomeBottomView) findViewById(R.id.bottomView);
 
         homeBottomView.setOnChangTopViewVisible(this);
+
+        topView.setSearchEditListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, SearchActivity.class));
+            }
+        });
+
+        topView.setAccountListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, RegisterActivity.class));
+            }
+        });
     }
 
     @Override

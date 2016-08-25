@@ -16,11 +16,12 @@ import com.jiqu.helper.tools.UIUtil;
 /**
  * Created by xiongweihua on 2016/7/4.
  */
-public class HomeTopView extends RelativeLayout{
+public class HomeTopView extends RelativeLayout implements View.OnClickListener{
     private Button account;
     private RelativeLayout searchRel;
     private EditText searchEdit;
     private Button searchBtn;
+    private OnClickListener editListener,btnListener,accountListener;
 
     public HomeTopView(Context context) {
         super(context);
@@ -40,6 +41,10 @@ public class HomeTopView extends RelativeLayout{
         searchBtn = (Button) view.findViewById(R.id.searchBtn);
 
         initViewSize();
+
+        searchEdit.setOnClickListener(this);
+        searchBtn.setOnClickListener(this);
+        account.setOnClickListener(this);
     }
 
     private void initViewSize(){
@@ -56,6 +61,40 @@ public class HomeTopView extends RelativeLayout{
             UIUtil.setViewSizeMargin(searchBtn,0,0,MetricsTool.Rx * 15,0);
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+    public void setSearchEditListener(OnClickListener listener){
+        this.editListener = listener;
+    }
+
+    public void setAccountListener(OnClickListener listener){
+        this.accountListener = listener;
+    }
+
+    public void setBtnListener(OnClickListener listener){
+        this.btnListener = listener;
+    }
+
+    public String getEditText(){
+        return searchEdit.getText().toString();
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.searchEdit:
+                if (editListener != null)
+                    editListener.onClick(v);
+                break;
+            case R.id.searchBtn:
+                if (btnListener != null)
+                    btnListener.onClick(v);
+                break;
+            case R.id.account:
+                if (accountListener != null)
+                    accountListener.onClick(v);
+                break;
         }
     }
 }

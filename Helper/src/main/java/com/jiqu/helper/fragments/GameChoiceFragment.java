@@ -5,7 +5,6 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -22,7 +21,7 @@ import com.jiqu.helper.interfaces.GetDataCallback;
 import com.jiqu.helper.itemDecoration.SpaceItemDecoration;
 import com.jiqu.helper.okhttp.OkHttpManager;
 import com.jiqu.helper.okhttp.OkHttpRequest;
-import com.jiqu.helper.tools.Constans;
+import com.jiqu.helper.tools.Constants;
 import com.jiqu.helper.tools.MetricsTool;
 import com.jiqu.helper.tools.RequestTools;
 import com.jiqu.helper.tools.Tools;
@@ -103,7 +102,7 @@ public class GameChoiceFragment extends BaseFragment implements View.OnClickList
                 adTwo.setImageURI(Uri.parse(choiceAdInfos.get(1).getRotate_pic()));
                 setClassification(gameChoiceData.getData2());
                 loadUrl = RequestTools.GAME_CHOICE_BASE_URL
-                        + gameChoiceData.getData2().get(0).getId() + "&numPerPage=" + Constans.NUMBER_PER_PAGE;
+                        + gameChoiceData.getData2().get(0).getId() + "&numPerPage=" + Constants.NUMBER_PER_PAGE;
                 loadData(loadUrl,0);
 
             }
@@ -194,7 +193,7 @@ public class GameChoiceFragment extends BaseFragment implements View.OnClickList
                 gameInfos.addAll(gameInfoList.get(index));
                 appAdapter.notifyDataSetChanged();
                 loadUrl = RequestTools.GAME_CHOICE_BASE_URL
-                        + classificationInfoList.get(index).getId() + "&numPerPage=" + Constans.NUMBER_PER_PAGE;
+                        + classificationInfoList.get(index).getId() + "&numPerPage=" + Constants.NUMBER_PER_PAGE;
                 if (gameInfoList.get(index).size() == 0){
                     loadData(loadUrl,index);
                 }
@@ -207,7 +206,7 @@ public class GameChoiceFragment extends BaseFragment implements View.OnClickList
         switch (currentIndex){
             case 0:
                 loadUrl = RequestTools.GAME_CHOICE_BASE_URL
-                        + classificationInfoList.get(0).getId() + "&numPerPage=" + Constans.NUMBER_PER_PAGE + "&pageNum=" + indexList[currentIndex];
+                        + classificationInfoList.get(0).getId() + "&numPerPage=" + Constants.NUMBER_PER_PAGE + "&pageNum=" + indexList[currentIndex];
                 loadData(loadUrl,currentIndex);
                 break;
         }

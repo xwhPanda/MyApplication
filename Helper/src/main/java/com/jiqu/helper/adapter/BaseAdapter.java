@@ -35,13 +35,6 @@ public abstract class BaseAdapter<T> extends RecyclerView.Adapter<BaseHolder>{
         adapter = this;
     }
 
-    public void setmDatas(List<T> datas){
-        if (mDatas != null){
-            mDatas = datas;
-            notifyDataSetChanged();
-        }
-    }
-
     @Override
     public BaseHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         BaseHolder holder = null;

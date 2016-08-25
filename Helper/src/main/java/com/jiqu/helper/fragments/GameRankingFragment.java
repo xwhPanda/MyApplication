@@ -21,7 +21,7 @@ import com.jiqu.helper.interfaces.GetDataCallback;
 import com.jiqu.helper.itemDecoration.SpaceItemDecoration;
 import com.jiqu.helper.okhttp.OkHttpManager;
 import com.jiqu.helper.okhttp.OkHttpRequest;
-import com.jiqu.helper.tools.Constans;
+import com.jiqu.helper.tools.Constants;
 import com.jiqu.helper.tools.MetricsTool;
 import com.jiqu.helper.tools.RequestTools;
 import com.jiqu.helper.tools.Tools;
@@ -141,7 +141,6 @@ public class GameRankingFragment extends BaseFragment implements View.OnClickLis
     }
 
     private void loadData(String url, final int index){
-        Log.i("TAG",url);
         OkHttpManager.getInstance().execute(new OkHttpRequest(url, OKHTTP_TAG_DATA, null, null).build(),GameRankingGameData.class , new GetDataCallback() {
             @Override
             public void onFailed(Call call, IOException e) {
@@ -201,7 +200,7 @@ public class GameRankingFragment extends BaseFragment implements View.OnClickLis
                 changeRecycleViewVisible(index);
                 changeButtonState(v);
                 if (gameInfoList.get(index).size() == 0){
-                    loadUrl = RequestTools.GAME_LIST + titleList.get(index).getId() + "&numPerPage=" + Constans.NUMBER_PER_PAGE;
+                    loadUrl = RequestTools.GAME_LIST + titleList.get(index).getId() + "&numPerPage=" + Constants.NUMBER_PER_PAGE;
                     loadData(loadUrl,index);
                 }
             }
@@ -225,7 +224,7 @@ public class GameRankingFragment extends BaseFragment implements View.OnClickLis
 
     @Override
     public void onLoadMore() {
-        loadUrl = RequestTools.GAME_LIST + titleList.get(currentIndex).getId() + "&numPerPage=" + Constans.NUMBER_PER_PAGE + "&pageNum=" + pageNums[currentIndex];
+        loadUrl = RequestTools.GAME_LIST + titleList.get(currentIndex).getId() + "&numPerPage=" + Constants.NUMBER_PER_PAGE + "&pageNum=" + pageNums[currentIndex];
         loadData(loadUrl,currentIndex);
     }
 }

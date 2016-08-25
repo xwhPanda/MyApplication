@@ -29,5 +29,8 @@
     <string name="app_choice_title">优质首发抢先看</string>
     <string name="more">更多</string>
     <string name="app_choice_list_title">时尚生活潮流汇</string>
+    <string name="startScan">开始扫描</string>
+    <string name="close_background_process">关闭后台应用</string>
+    <string name="clear_rubish">清理垃圾</string>
 
 </resources>

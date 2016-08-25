@@ -21,6 +21,15 @@ public class RecommendClassificationItemData implements Serializable{
     private String url;
     private String name;
     private String intro;
+    private boolean col;
+
+    public boolean isCol() {
+        return col;
+    }
+
+    public void setCol(boolean col) {
+        this.col = col;
+    }
 
     public String getId() {
         return id;
