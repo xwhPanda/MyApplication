@@ -1,0 +1,140 @@
+ECLIPSE ANDROID PROJECT IMPORT SUMMARY
+======================================
+
+Manifest Merging:
+-----------------
+Your project uses libraries that provide manifests, and your Eclipse
+project did not explicitly turn on manifest merging. In Android Gradle
+projects, manifests are always merged (meaning that contents from your
+libraries' manifests will be merged into the app manifest. If you had
+manually copied contents from library manifests into your app manifest
+you may need to remove these for the app to build correctly.
+
+Ignored Files:
+--------------
+The following files were *not* copied into the new Gradle project; you
+should evaluate whether these are still needed in your project and if
+so manually move them:
+
+From Store:
+* .gitattributes
+* .gitignore
+* README.md
+* ic_launcher-web.png
+* lib\
+* lib\android.jar
+* proguard-project.txt
+From social_sdk_library_project:
+* build.gradle
+* proguard-project.txt
+
+Replaced Jars with Dependencies:
+--------------------------------
+The importer recognized the following .jar files as third party
+libraries and replaced them with Gradle dependencies instead. This has
+the advantage that more explicit version information is known, and the
+libraries can be updated automatically. However, it is possible that
+the .jar file in your project was of an older version than the
+dependency we picked, which could render the project not compileable.
+You can disable the jar replacement in the import wizard and try again:
+
+android-support-v4.jar => com.android.support:support-v4:18.+
+
+Moved Files:
+------------
+Android Gradle projects use a different directory structure than ADT
+Eclipse projects. Here's how the projects were restructured:
+
+In social_sdk_library_project:
+* AndroidManifest.xml => social_sdk_library_project\src\main\AndroidManifest.xml
+* libs\arm64-v8a\libweibosdkcore.so => social_sdk_library_project\src\main\jniLibs\arm64-v8a\libweibosdkcore.so
+* libs\armeabi-v7a\libweibosdkcore.so => social_sdk_library_project\src\main\jniLibs\armeabi-v7a\libweibosdkcore.so
+* libs\armeabi\libweibosdkcore.so => social_sdk_library_project\src\main\jniLibs\armeabi\libweibosdkcore.so
+* libs\libapshare.jar => social_sdk_library_project\libs\libapshare.jar
+* libs\mips64\libweibosdkcore.so => social_sdk_library_project\src\main\jniLibs\mips64\libweibosdkcore.so
+* libs\mips\libweibosdkcore.so => social_sdk_library_project\src\main\jniLibs\mips\libweibosdkcore.so
+* libs\mta-sdk-1.6.2.jar => social_sdk_library_project\libs\mta-sdk-1.6.2.jar
+* libs\open_sdk_r5509.jar => social_sdk_library_project\libs\open_sdk_r5509.jar
+* libs\SocialSDK_alipay.jar => social_sdk_library_project\libs\SocialSDK_alipay.jar
+* libs\SocialSDK_douban.jar => social_sdk_library_project\libs\SocialSDK_douban.jar
+* libs\SocialSDK_email.jar => social_sdk_library_project\libs\SocialSDK_email.jar
+* libs\SocialSDK_evernote.jar => social_sdk_library_project\libs\SocialSDK_evernote.jar
+* libs\SocialSDK_facebook_1.jar => social_sdk_library_project\libs\SocialSDK_facebook_1.jar
+* libs\SocialSDK_facebook_2.jar => social_sdk_library_project\libs\SocialSDK_facebook_2.jar
+* libs\SocialSDK_flickr.jar => social_sdk_library_project\libs\SocialSDK_flickr.jar
+* libs\SocialSDK_foursquare.jar => social_sdk_library_project\libs\SocialSDK_foursquare.jar
+* libs\SocialSDK_instagram.jar => social_sdk_library_project\libs\SocialSDK_instagram.jar
+* libs\SocialSDK_kakao.jar => social_sdk_library_project\libs\SocialSDK_kakao.jar
+* libs\SocialSDK_laiwang_1.jar => social_sdk_library_project\libs\SocialSDK_laiwang_1.jar
+* libs\SocialSDK_laiwang_2.jar => social_sdk_library_project\libs\SocialSDK_laiwang_2.jar
+* libs\SocialSDK_line.jar => social_sdk_library_project\libs\SocialSDK_line.jar
+* libs\SocialSDK_linkedin_1.jar => social_sdk_library_project\libs\SocialSDK_linkedin_1.jar
+* libs\SocialSDK_linkedin_2.jar => social_sdk_library_project\libs\SocialSDK_linkedin_2.jar
+* libs\SocialSDK_pinterest.jar => social_sdk_library_project\libs\SocialSDK_pinterest.jar
+* libs\SocialSDK_pocket.jar => social_sdk_library_project\libs\SocialSDK_pocket.jar
+* libs\SocialSDK_QQZone_3.jar => social_sdk_library_project\libs\SocialSDK_QQZone_3.jar
+* libs\SocialSDK_renren_1.jar => social_sdk_library_project\libs\SocialSDK_renren_1.jar
+* libs\SocialSDK_renren_2.jar => social_sdk_library_project\libs\SocialSDK_renren_2.jar
+* libs\SocialSDK_Sina.jar => social_sdk_library_project\libs\SocialSDK_Sina.jar
+* libs\SocialSDK_sms.jar => social_sdk_library_project\libs\SocialSDK_sms.jar
+* libs\SocialSDK_tencentWB_1.jar => social_sdk_library_project\libs\SocialSDK_tencentWB_1.jar
+* libs\SocialSDK_tencentWB_2.jar => social_sdk_library_project\libs\SocialSDK_tencentWB_2.jar
+* libs\SocialSDK_tencentWB_3.jar => social_sdk_library_project\libs\SocialSDK_tencentWB_3.jar
+* libs\SocialSDK_tumblr.jar => social_sdk_library_project\libs\SocialSDK_tumblr.jar
+* libs\SocialSDK_twitter.jar => social_sdk_library_project\libs\SocialSDK_twitter.jar
+* libs\SocialSDK_WeiXin_1.jar => social_sdk_library_project\libs\SocialSDK_WeiXin_1.jar
+* libs\SocialSDK_WeiXin_2.jar => social_sdk_library_project\libs\SocialSDK_WeiXin_2.jar
+* libs\SocialSDK_whatsapp.jar => social_sdk_library_project\libs\SocialSDK_whatsapp.jar
+* libs\SocialSDK_yixin_1.jar => social_sdk_library_project\libs\SocialSDK_yixin_1.jar
+* libs\SocialSDK_yixin_2.jar => social_sdk_library_project\libs\SocialSDK_yixin_2.jar
+* libs\SocialSDK_ynote.jar => social_sdk_library_project\libs\SocialSDK_ynote.jar
+* libs\twitter4j-core-4.0.4.jar => social_sdk_library_project\libs\twitter4j-core-4.0.4.jar
+* libs\umeng_social_sdk.jar => social_sdk_library_project\libs\umeng_social_sdk.jar
+* libs\volley.jar => social_sdk_library_project\libs\volley.jar
+* libs\weiboSDKCore_3.1.4.jar => social_sdk_library_project\libs\weiboSDKCore_3.1.4.jar
+* libs\x86\libweibosdkcore.so => social_sdk_library_project\src\main\jniLibs\x86\libweibosdkcore.so
+* libs\x86_64\libweibosdkcore.so => social_sdk_library_project\src\main\jniLibs\x86_64\libweibosdkcore.so
+* res\ => social_sdk_library_project\src\main\res\
+In Store:
+* AndroidManifest.xml => store\src\main\AndroidManifest.xml
+* assets\ => store\src\main\assets\
+* libs\calligraphy-1.2.0.jar => store\libs\calligraphy-1.2.0.jar
+* libs\fastjson-1.2.8.jar => store\libs\fastjson-1.2.8.jar
+* libs\greendao-2.1.0.jar => store\libs\greendao-2.1.0.jar
+* libs\umeng_social_sdk.jar => store\libs\umeng_social_sdk.jar
+* libs\zip4j_1.3.2.jar => store\libs\zip4j_1.3.2.jar
+* lint.xml => store\lint.xml
+* res\ => store\src\main\res\
+* src\ => store\src\main\java\
+* src\android\content\pm\IPackageDataObserver.aidl => store\src\main\aidl\android\content\pm\IPackageDataObserver.aidl
+* src\android\content\pm\IPackageStatsObserver.aidl => store\src\main\aidl\android\content\pm\IPackageStatsObserver.aidl
+* src\android\content\pm\PackageStats.aidl => store\src\main\aidl\android\content\pm\PackageStats.aidl
+
+Missing Android Support Repository:
+-----------------------------------
+Some useful libraries, such as the Android Support Library, are
+installed from a special Maven repository, which should be installed
+via the SDK manager.
+
+It looks like this library is missing from your SDK installation at:
+F:\Downloads\adt-bundle-windows-x86_64-20140624\sdk
+
+To install it, open the SDK manager, and in the Extras category,
+select "Android Support Repository". You may also want to install the
+"Google Repository" if you want to use libraries like Google Play
+Services.
+
+Next Steps:
+-----------
+You can now build the project. The Gradle project needs network
+connectivity to download dependencies.
+
+Bugs:
+-----
+If for some reason your project does not build, and you determine that
+it is due to a bug or limitation of the Eclipse to Gradle importer,
+please file a bug at http://b.android.com with category
+Component-Tools.
+
+(This import summary is for your information only, and can be deleted
+after import once you are satisfied with the results.)
