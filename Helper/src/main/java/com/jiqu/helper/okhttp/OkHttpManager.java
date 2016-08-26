@@ -58,7 +58,6 @@ public class OkHttpManager {
             @Override
             public void onResponse(final Call call, Response response) throws IOException {
                 String json = response.body().string();
-                Log.i("TAG",json);
                 if (!TextUtils.isEmpty(json)){
                     final Object data = JSON.parseObject(json,className);
                     mHandler.post(new Runnable() {

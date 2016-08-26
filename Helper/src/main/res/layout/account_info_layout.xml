@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/topBlue"
+    android:clipToPadding="true"
+    android:fitsSystemWindows="true">
+
+    <com.jiqu.helper.view.TitleBar
+        android:id="@+id/titleBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <LinearLayout
+        android:id="@+id/modifyConfirmLin"
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:gravity="center"
+        android:background="@color/white"
+        android:layout_alignParentBottom="true">
+        <Button
+            android:id="@+id/modifyConfirm"
+            android:layout_width="326dp"
+            android:layout_height="52dp"
+            android:textColor="@color/white"
+            android:layout_centerHorizontal="true"
+            android:background="@color/topSelectedBlue"
+            android:textSize="17dp"
+            android:text="修改"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:layout_below="@id/titleBar"
+        android:layout_above="@id/modifyConfirmLin"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="14dp"
+            android:layout_marginRight="14dp"
+            android:background="@color/white">
+
+            <com.jiqu.helper.view.CircleImageView
+                android:id="@+id/account_icon"
+                android:layout_width="46dp"
+                android:layout_height="46dp"
+                android:layout_centerVertical="true"
+                android:src="@mipmap/male_icon" />
+
+            <TextView
+                android:id="@+id/account_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_toRightOf="@id/account_icon"
+                android:maxLines="1"
+                android:text="哈哈哈哈哈哈"
+                android:textColor="@color/recommend_choice_game_detail_color"
+                android:textSize="15dp" />
+
+            <Button
+                android:id="@+id/modifyBtn"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:enabled="false"
+                android:background="@mipmap/modify" />
+
+            <TextView
+                android:id="@+id/modifyTip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:layout_toLeftOf="@id/modifyBtn"
+                android:maxLines="1"
+                android:text="更换头像"
+                android:textColor="@color/recommend_choice_game_detail_color"
+                android:textSize="15dp" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/recommend_choice_space_color" />
+
+        <LinearLayout
+            android:id="@+id/modifyLin"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:visibility="gone">
+
+            <Button
+                android:id="@+id/take_photo"
+                android:layout_width="145dp"
+                android:layout_height="25dp"
+                android:background="@color/clear_before_color"
+                android:text="拍照"
+                android:textColor="@color/white"
+                android:textSize="15dp" />
+
+            <Button
+                android:id="@+id/choice_photo"
+                android:layout_width="145dp"
+                android:layout_height="25dp"
+                android:layout_marginLeft="20dp"
+                android:background="#3fc6f3"
+                android:text="从相册中上传"
+                android:textColor="@color/white"
+                android:textSize="15dp" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/recommend_choice_space_color" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="14dp"
+            android:layout_marginRight="14dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:text="姓名"
+                android:textColor="@color/recommend_choice_game_detail_color"
+                android:textSize="15dp" />
+
+            <EditText
+                android:id="@+id/name_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:background="@null"
+                android:maxLines="1"
+                android:text="哈哈哈"
+                android:enabled="false"
+                android:textColor="@color/recommend_choice_game_detail_color"
+                android:textSize="15dp" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/recommend_choice_space_color" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="14dp"
+            android:layout_marginRight="14dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:text="生日"
+                android:textColor="@color/recommend_choice_game_detail_color"
+                android:textSize="15dp" />
+
+            <EditText
+                android:id="@+id/birth_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:background="@null"
+                android:maxLines="1"
+                android:enabled="false"
+                android:text="2001-2-1"
+                android:textColor="@color/recommend_choice_game_detail_color"
+                android:textSize="15dp" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/recommend_choice_space_color" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="14dp"
+            android:layout_marginRight="14dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:text="电话号码"
+                android:textColor="@color/recommend_choice_game_detail_color"
+                android:textSize="15dp" />
+
+            <EditText
+                android:id="@+id/phone_number_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:background="@null"
+                android:enabled="false"
+                android:maxLines="1"
+                android:text="1231323131"
+                android:textColor="@color/recommend_choice_game_detail_color"
+                android:textSize="15dp" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/recommend_choice_space_color" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:layout_marginLeft="14dp"
+            android:layout_marginRight="14dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:maxLines="1"
+                android:text="邮箱"
+                android:textColor="@color/recommend_choice_game_detail_color"
+                android:textSize="15dp" />
+
+            <EditText
+                android:id="@+id/email_edit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:background="@null"
+                android:enabled="false"
+                android:maxLines="1"
+                android:text="156564647@qq.com"
+                android:textColor="@color/recommend_choice_game_detail_color"
+                android:textSize="15dp" />
+        </RelativeLayout>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/recommend_choice_space_color"/>
+        <View
+            android:id="@+id/emptyView"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:background="@color/white"/>
+    </LinearLayout>
+
+
+</RelativeLayout>

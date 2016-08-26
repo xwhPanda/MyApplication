@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="true"
+    android:fitsSystemWindows="true"
+    android:background="@color/clear_before_color">
+
+    <com.jiqu.helper.view.TitleBar
+        android:id="@+id/titleBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <RelativeLayout
+        android:id="@+id/scanRel"
+        android:layout_width="wrap_content"
+        android:layout_height="180dp"
+        android:layout_below="@id/titleBar"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="-15dp">
+
+        <ImageView
+            android:id="@+id/scanBg"
+            android:layout_width="158dp"
+            android:layout_height="158dp"
+            android:layout_centerInParent="true"
+            android:background="@mipmap/scanning" />
+
+        <RelativeLayout
+            android:id="@+id/scanTipRel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true" >
+
+            <TextView
+                android:id="@+id/scanScore"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:text="100"
+                android:textSize="60dp"
+                android:textColor="@color/white" />
+
+            <TextView
+                android:id="@+id/scanTip"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/scanScore"
+                android:layout_centerHorizontal="true"
+                android:text="@string/startScan"
+                android:textSize="12dp"
+                android:textColor="@color/white" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:layout_below="@id/scanRel">
+
+        <RelativeLayout
+            android:id="@+id/closeProcessRel"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:layout_centerHorizontal="true">
+
+            <ImageView
+                android:id="@+id/closeProcessImg"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerVertical="true"
+                android:background="@mipmap/shuaxin_nor" />
+
+            <CheckBox
+                android:id="@+id/closeProcessBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:background="@drawable/check_select"
+                android:button="@null"
+                android:visibility="invisible"/>
+
+            <TextView
+                android:id="@+id/closeProcessTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:textSize="12dp"
+                android:layout_toRightOf="@id/closeProcessImg"
+                android:text="@string/close_background_process"
+                android:textColor="@color/uninstall_default_color" />
+
+            <TextView
+                android:id="@+id/closeProcessCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:textSize="12dp"
+                android:textColor="@color/uninstall_default_color" />
+        </RelativeLayout>
+
+        <View
+            android:id="@+id/emptyView"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/closeProcessRel"
+            android:background="@color/recommend_choice_space_color"/>
+
+        <RelativeLayout
+            android:id="@+id/clearRubishRel"
+            android:layout_width="match_parent"
+            android:layout_height="75dp"
+            android:paddingLeft="15dp"
+            android:paddingRight="15dp"
+            android:layout_below="@id/emptyView"
+            android:layout_centerHorizontal="true">
+
+            <ImageView
+                android:id="@+id/clearRubishImg"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerVertical="true"
+                android:background="@mipmap/shuaxin_nor" />
+
+            <CheckBox
+                android:id="@+id/clearRubishBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:background="@drawable/check_select"
+                android:button="@null"
+                android:visibility="invisible"/>
+
+            <TextView
+                android:id="@+id/clearRubishTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="20dp"
+                android:layout_toRightOf="@id/clearRubishImg"
+                android:text="@string/clear_rubish"
+                android:textSize="12dp"
+                android:textColor="@color/uninstall_default_color" />
+
+            <TextView
+                android:id="@+id/clearRubishCount"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:textSize="12dp"
+                android:textColor="@color/uninstall_default_color" />
+        </RelativeLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_below="@id/clearRubishRel"
+            android:background="@color/recommend_choice_space_color"/>
+
+        <Button
+            android:id="@+id/speedUp"
+            android:layout_width="260dp"
+            android:layout_height="37dp"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/clearRubishRel"
+            android:layout_marginTop="100dp"
+            android:background="@mipmap/unfinish"
+            android:textColor="@color/uninstall_default_color" />
+    </RelativeLayout>
+
+</RelativeLayout>

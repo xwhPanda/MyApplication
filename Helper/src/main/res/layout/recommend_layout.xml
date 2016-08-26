@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clipToPadding="false"
+    android:fitsSystemWindows="true"
+    android:background="@color/topBlue">
+
+    <com.jiqu.helper.view.TitleBar
+        android:id="@+id/topBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+    </com.jiqu.helper.view.TitleBar>
+
+    <LinearLayout
+        android:id="@+id/titleLin"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:background="@color/white">
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/contentRel"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/recommend_choice_space_color">
+    </RelativeLayout>
+</LinearLayout>

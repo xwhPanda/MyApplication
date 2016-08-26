@@ -4,10 +4,13 @@ import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
+import android.util.Log;
 import android.view.View;
 
+import com.jiqu.database.Account;
 import com.jiqu.helper.activity.RegisterActivity;
 import com.jiqu.helper.activity.SearchActivity;
+import com.jiqu.helper.application.HelperApplication;
 import com.jiqu.helper.fragments.AppFragment;
 import com.jiqu.helper.fragments.GameFragment;
 import com.jiqu.helper.fragments.MineFragment;
@@ -71,9 +74,19 @@ public class MainActivity extends BaseFragmentActivity implements OnChangTopView
         topView.setAccountListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, RegisterActivity.class));
+                gotoActivity();
             }
         });
+    }
+
+    private void gotoActivity(){
+        Account account = HelperApplication.daoSession.getAccountDao().queryBuilder().unique();
+        if (account != null){
+            Log.i("TAG","username :　" + account.getUsername() + " / " + account.getNickname());
+        }else {
+            startActivity(new Intent(this,RegisterActivity.class));
+            Log.i("TAG","account is null !");
+        }
     }
 
     @Override

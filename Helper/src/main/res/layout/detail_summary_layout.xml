@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <HorizontalScrollView
+            android:id="@+id/horizontalScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:id="@+id/contentLin"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"></LinearLayout>
+        </HorizontalScrollView>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/recommend_choice_space_color" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/descriptionImg"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:background="@mipmap/description_icon" />
+
+            <TextView
+                android:id="@+id/descriptionText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="@string/description"
+                android:textColor="@color/black" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="17dp"
+            android:layout_marginRight="17dp"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/recommend_choice_game_size_color"
+            android:text="除此之外，其他类型两者都一样，包括center、centerCrop、centerInside、fitCenter 等等。
+            focusCrop 与 centerCrop类似，但是centerCrop是指定以图片的中心为焦点，剪切图片，而focusCrop可以指定一个焦点进行剪切，下面介绍如何设置焦点。
+            Focus point是一个相对的坐标系，(0f,0f)表示左顶角，(1f,1f)表示右底角，当焦点为(0.5f,0.5f)时，剪切效果就和centerCrop一样了。
+            我们可以在xml里设置ScaleType
+            除此之外，其他类型两者都一样，包括center、centerCrop、centerInside、fitCenter 等等。
+            focusCrop 与 centerCrop类似，但是centerCrop是指定以图片的中心为焦点，剪切图片，而focusCrop可以指定一个焦点进行剪切，下面介绍如何设置焦点。
+            Focus point是一个相对的坐标系，(0f,0f)表示左顶角，(1f,1f)表示右底角，当焦点为(0.5f,0.5f)时，剪切效果就和centerCrop一样了。
+            我们可以在xml里设置ScaleType"/>
+    </LinearLayout>
+</ScrollView>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresc="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="93dp"
+    android:paddingRight="12dp"
+    android:paddingLeft="12dp"
+    android:background="@color/white">
+    
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/icon"
+        android:layout_gravity="center_vertical"
+        android:layout_width="53dp"
+        android:layout_height="53dp"
+        fresc:roundAsCircle="true"
+        fresc:fadeDuration="300"/>
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="12dp"
+        android:paddingRight="15dp">
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="11dp"
+            android:textColor="@color/uninstall_default_color"/>
+        <TextView
+            android:id="@+id/time"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/name"
+            android:layout_marginLeft="12dp"
+            android:textColor="@color/uninstall_select_color"
+            android:textSize="11dp"/>
+        <TextView
+            android:id="@+id/comment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:layout_below="@id/name"
+            android:maxLines="1"
+            android:textSize="11dp"
+            android:textColor="@color/black"/>
+    </RelativeLayout>
+</LinearLayout>
