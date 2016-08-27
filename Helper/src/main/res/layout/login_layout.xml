@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,232 +11,180 @@
         android:id="@+id/title_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="match_parent"
+        android:layout_below="@id/title_bar"
         android:background="@color/white"
         android:orientation="vertical">
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:paddingLeft="33dp"
-            android:paddingRight="33dp"
-            android:gravity="center_vertical">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/recommend_choice_game_detail_color"
-                android:textSize="15dp"
-                android:text="性别"/>
 
-            <RadioGroup
-                android:id="@+id/gender_group"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginRight="15dp"
+            android:layout_marginLeft="15dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/login_bg_layer"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
                 android:orientation="horizontal">
-                <RadioButton
-                    android:id="@+id/man_radio"
+                <ImageView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textSize="15dp"
-                    android:textColor="@color/recommend_choice_game_detail_color"
-                    android:background="@color/transparent"
-                    android:button="@drawable/gender_selector"
-                    android:text="汉子"/>
-                <RadioButton
-                    android:id="@+id/female_radio"
-                    android:layout_width="wrap_content"
+                    android:src="@mipmap/people"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp"/>
+                <EditText
+                    android:id="@+id/account_edit"
+                    android:layout_width="254dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="30dp"
                     android:textSize="15dp"
-                    android:textColor="@color/recommend_choice_game_detail_color"
-                    android:background="@color/transparent"
-                    android:button="@drawable/gender_selector"
-                    android:text="妹子"/>
-            </RadioGroup>
-        </RelativeLayout>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/recommend_choice_space_color"/>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:paddingLeft="33dp"
-            android:paddingRight="33dp"
-            android:gravity="center_vertical">
-            <TextView
-                android:id="@+id/nickname"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/recommend_choice_game_detail_color"
-                android:layout_centerVertical="true"
-                android:text="昵称"
-                android:textSize="13dp" />
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:layout_marginLeft="5dp"
+                    android:background="@null"
+                    android:lines="1"
+                    android:textColor="@color/recommend_choice_game_detail_color"/>
+            </LinearLayout>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="2px"
+                android:background="@color/recommend_choice_space_color"/>
 
-            <EditText
-                android:id="@+id/nickname_edit"
-                android:layout_width="170dp"
-                android:layout_height="wrap_content"
-                android:textSize="15dp"
-                android:textColor="@color/recommend_choice_game_detail_color"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:maxLength="25"
-                android:lines="1"/>
-        </RelativeLayout>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/recommend_choice_space_color"/>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@mipmap/suo"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="10dp"/>
+                <EditText
+                    android:id="@+id/password_edit"
+                    android:layout_width="254dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="15dp"
+                    android:layout_gravity="center_vertical"
+                    android:gravity="center_vertical"
+                    android:layout_marginLeft="5dp"
+                    android:background="@null"
+                    android:inputType="textPassword"
+                    android:lines="1"
+                    android:textColor="@color/recommend_choice_game_detail_color"/>
+            </LinearLayout>
+        </LinearLayout>
+
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:paddingLeft="33dp"
-            android:paddingRight="33dp"
-            android:gravity="center_vertical">
+            android:layout_height="wrap_content"
+            android:paddingTop="15dp">
+            <Button
+                android:id="@+id/login_button"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="15dp"
+                android:background="@color/login_btn_color"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:text="登录"/>
+
             <TextView
-                android:id="@+id/phone_number"
+                android:id="@+id/forgot_password"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/recommend_choice_game_detail_color"
-                android:text="电话"
-                android:textSize="13dp"
-                android:layout_centerVertical="true"/>
-            <EditText
-                android:id="@+id/phone_number_edit"
-                android:layout_width="170dp"
-                android:layout_height="wrap_content"
+                android:background="@null"
+                android:padding="0dp"
                 android:textSize="15dp"
-                android:textColor="@color/recommend_choice_game_detail_color"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:inputType="phone"
-                android:maxLength="25"
-                android:lines="1"/>
+                android:text="忘记密码"
+                android:layout_alignRight="@id/login_button"
+                android:layout_below="@id/login_button"
+                android:layout_marginTop="5dp"
+                android:clickable="true"
+                android:textColor="@color/recommend_choice_game_detail_color"/>
+
+            <Button
+                android:id="@+id/register_button"
+                android:layout_width="match_parent"
+                android:layout_height="54dp"
+                android:layout_marginRight="15dp"
+                android:layout_marginLeft="15dp"
+                android:background="@color/login_btn_color"
+                android:textColor="@color/white"
+                android:textSize="20dp"
+                android:layout_marginTop="24dp"
+                android:layout_below="@id/forgot_password"
+                android:text="注册"/>
         </RelativeLayout>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/recommend_choice_space_color"/>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:paddingLeft="33dp"
-            android:paddingRight="33dp"
-            android:gravity="center_vertical">
-            <TextView
-                android:id="@+id/email"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/recommend_choice_game_detail_color"
-                android:layout_centerVertical="true"
-                android:text="邮箱"
-                android:textSize="13dp" />
-            <EditText
-                android:id="@+id/email_edit"
-                android:layout_width="170dp"
-                android:layout_height="wrap_content"
-                android:textSize="15dp"
-                android:textColor="@color/recommend_choice_game_detail_color"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:inputType="textEmailAddress"
-                android:maxLength="25"
-                android:lines="1"/>
-        </RelativeLayout>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/recommend_choice_space_color"/>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:paddingLeft="33dp"
-            android:paddingRight="33dp"
-            android:gravity="center_vertical">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/recommend_choice_game_detail_color"
-                android:layout_centerVertical="true"
-                android:text="密码"
-                android:textSize="13dp" />
-            <EditText
-                android:id="@+id/password_edit"
-                android:layout_width="170dp"
-                android:layout_height="wrap_content"
-                android:textSize="15dp"
-                android:textColor="@color/recommend_choice_game_detail_color"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:inputType="textPassword"
-                android:maxLength="20"
-                android:lines="1"/>
-        </RelativeLayout>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/recommend_choice_space_color"/>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:paddingLeft="33dp"
-            android:paddingRight="33dp"
-            android:gravity="center_vertical">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/recommend_choice_game_detail_color"
-                android:layout_centerVertical="true"
-                android:text="确认密码"
-                android:textSize="13dp" />
-            <EditText
-                android:id="@+id/confirm_password_edit"
-                android:layout_width="170dp"
-                android:layout_height="wrap_content"
-                android:textSize="15dp"
-                android:textColor="@color/recommend_choice_game_detail_color"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                android:inputType="textPassword"
-                android:maxLength="20"
-                android:lines="1"/>
-        </RelativeLayout>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="@color/recommend_choice_space_color"/>
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:background="@color/white"/>
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/register_lin"
         android:layout_width="match_parent"
-        android:layout_height="90dp"
-        android:gravity="center"
-        android:background="@color/white">
-        <Button
-            android:id="@+id/register_btn"
-            android:layout_width="326dp"
-            android:layout_height="52dp"
-            android:textColor="@color/white"
-            android:layout_centerHorizontal="true"
-            android:background="@color/topSelectedBlue"
-            android:textSize="17dp"
-            android:text="注册"/>
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:orientation="vertical">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+            <View
+                android:layout_width="0dp"
+                android:layout_height="2px"
+                android:layout_weight="1"
+                android:background="@color/recommend_choice_space_color"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="第三方登录"
+                android:textColor="@color/recommend_choice_game_detail_color"
+                android:textSize="15dp"/>
+            <View
+                android:layout_width="0dp"
+                android:layout_height="2px"
+                android:layout_weight="1"
+                android:background="@color/recommend_choice_space_color"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="24dp"
+            android:paddingBottom="24dp"
+            android:orientation="horizontal">
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+            <Button
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@mipmap/qq"/>
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+            <Button
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@mipmap/weixin"/>
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+            <ImageButton
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@mipmap/weibo"/>
+            <View
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"/>
+        </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+</RelativeLayout>

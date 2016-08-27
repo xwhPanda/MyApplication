@@ -17,8 +17,10 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.jiqu.database.Account;
 import com.jiqu.helper.BaseActivity;
 import com.jiqu.helper.R;
+import com.jiqu.helper.application.HelperApplication;
 import com.jiqu.helper.view.CircleImageView;
 import com.jiqu.helper.view.TitleBar;
 
@@ -34,6 +36,7 @@ public class AccountInfoActivity extends BaseActivity implements View.OnClickLis
     private String path;
     private TitleBar titleBar;
     private CircleImageView accountIcon;
+    private TextView accountName;
     private Button modifyBtn;
     private TextView modifyTip;
     private LinearLayout modifyLin;
@@ -57,6 +60,7 @@ public class AccountInfoActivity extends BaseActivity implements View.OnClickLis
         }
         titleBar = (TitleBar) findViewById(R.id.titleBar);
         accountIcon = (CircleImageView) findViewById(R.id.account_icon);
+        accountName = (TextView) findViewById(R.id.account_name);
         modifyBtn = (Button) findViewById(R.id.modifyBtn);
         modifyTip = (TextView) findViewById(R.id.modifyTip);
         modifyLin = (LinearLayout) findViewById(R.id.modifyLin);
@@ -86,7 +90,11 @@ public class AccountInfoActivity extends BaseActivity implements View.OnClickLis
 
     @Override
     public void initData() {
-
+        Account account = HelperApplication.daoSession.getAccountDao().queryBuilder().unique();
+        accountName.setText(account.getNickname());
+        birthEdit.setText(account.getBirthday());
+        phoneNumberEdit.setText(account.getPhone());
+        emailEdit.setText(account.getEmail());
     }
 
     @Override
@@ -154,5 +162,13 @@ public class AccountInfoActivity extends BaseActivity implements View.OnClickLis
                     break;
             }
         }
+    }
+
+    private void modify(){
+        String name = nameEdit.getText().toString();
+        String birth = birthEdit.getText().toString();
+        String phoneNumber = phoneNumberEdit.getText().toString();
+        String email = emailEdit.getText().toString();
+
     }
 }

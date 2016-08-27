@@ -1,5 +1,6 @@
 package com.jiqu.helper.fragments;
 
+import android.content.Intent;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
@@ -13,10 +14,13 @@ import android.widget.TextView;
 
 import com.jiqu.helper.BaseFragment;
 import com.jiqu.helper.R;
+import com.jiqu.helper.activity.DetailActivity;
+import com.jiqu.helper.adapter.BaseAdapter;
 import com.jiqu.helper.adapter.RecommendAppAdapter;
 import com.jiqu.helper.data.GameInfo;
 import com.jiqu.helper.data.RecommendListData;
 import com.jiqu.helper.interfaces.GetDataCallback;
+import com.jiqu.helper.interfaces.RecycleViewOnItemClickListener;
 import com.jiqu.helper.itemDecoration.SpaceItemDecoration;
 import com.jiqu.helper.okhttp.OkHttpManager;
 import com.jiqu.helper.okhttp.OkHttpRequest;
@@ -38,7 +42,7 @@ import okhttp3.Call;
  * 首页榜单
  */
 public class HomeListFragment extends BaseFragment implements
-        AnimRFRecyclerView.LoadDataListener,View.OnClickListener{
+        AnimRFRecyclerView.LoadDataListener,View.OnClickListener,RecycleViewOnItemClickListener {
     private final String OKHTTP_TAG_APP = "HomeListFragmentApp";
     private final String OKHTTP_TAG_GAME = "HomeListFragmentGame";
     private View spaceView;
@@ -67,6 +71,8 @@ public class HomeListFragment extends BaseFragment implements
     public void initView() {
         appAdapter = new RecommendAppAdapter(mActivity,R.layout.recommend_app_item_layout,infoList);
         gameAdapter = new RecommendAppAdapter(mActivity,R.layout.recommend_app_item_layout,gameInfoList);
+        appAdapter.setListener(this);
+        gameAdapter.setListener(this);
         spaceView = (View) view.findViewById(R.id.spaceView);
         titleLin = (LinearLayout) view.findViewById(R.id.titleLin);
         appRankLin = (LinearLayout) view.findViewById(R.id.appRankLin);
@@ -205,5 +211,28 @@ public class HomeListFragment extends BaseFragment implements
             appRel.setVisibility(View.GONE);
             gameRel.setVisibility(View.VISIBLE);
         }
+    }
+
+    @Override
+    public void onItemClick(View view, BaseAdapter adapter, int position) {
+        Intent intent = new Intent(mActivity,DetailActivity.class);
+        if (adapter == appAdapter){
+            if (Tools.getType(infoList.get(position).getType()) == -1){
+                return;
+            }else {
+                intent.putExtra("type",Tools.getType(infoList.get(position).getType()));
+            }
+            intent.putExtra("id",infoList.get(position).getId());
+            intent.putExtra("name",infoList.get(position).getApply_name());
+        }else if (adapter == gameAdapter){
+            if (Tools.getType(gameInfoList.get(position).getType()) == -1){
+                return;
+            }else {
+                intent.putExtra("type",Tools.getType(gameInfoList.get(position).getType()));
+            }
+            intent.putExtra("id",gameInfoList.get(position).getId());
+            intent.putExtra("name",gameInfoList.get(position).getApply_name());
+        }
+        startActivity(intent);
     }
 }

@@ -33,6 +33,10 @@ public class RecommendAppAdapter extends BaseAdapter{
         return new RecommendAppHolder(view);
     }
 
+    public List getData(){
+        return mDatas;
+    }
+
     @Override
     public void convert(BaseHolder baseHolder, int position) {
             GameInfo info = (GameInfo)mDatas.get(position);

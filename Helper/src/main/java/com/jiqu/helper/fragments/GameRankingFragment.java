@@ -1,5 +1,6 @@
 package com.jiqu.helper.fragments;
 
+import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.support.v7.widget.RecyclerView;
@@ -12,12 +13,15 @@ import android.widget.TextView;
 
 import com.jiqu.helper.BaseFragment;
 import com.jiqu.helper.R;
+import com.jiqu.helper.activity.DetailActivity;
+import com.jiqu.helper.adapter.BaseAdapter;
 import com.jiqu.helper.adapter.RecommendAppAdapter;
 import com.jiqu.helper.data.GameInfo;
 import com.jiqu.helper.data.GameRankingData;
 import com.jiqu.helper.data.GameRankingGameData;
 import com.jiqu.helper.data.RecommendClassificationItemData;
 import com.jiqu.helper.interfaces.GetDataCallback;
+import com.jiqu.helper.interfaces.RecycleViewOnItemClickListener;
 import com.jiqu.helper.itemDecoration.SpaceItemDecoration;
 import com.jiqu.helper.okhttp.OkHttpManager;
 import com.jiqu.helper.okhttp.OkHttpRequest;
@@ -134,6 +138,22 @@ public class GameRankingFragment extends BaseFragment implements View.OnClickLis
             List<GameInfo> infoList = new ArrayList<>();
             gameInfoList.add(infoList);
             RecommendAppAdapter appAdapter = new RecommendAppAdapter(mActivity,R.layout.recommend_app_item_layout,infoList);
+
+            final List<GameInfo> gameInfos = infoList;
+            appAdapter.setListener(new RecycleViewOnItemClickListener() {
+                @Override
+                public void onItemClick(View view, BaseAdapter adapter, int position) {
+                    Intent intent = new Intent(mActivity, DetailActivity.class);
+                    if (Tools.getType(gameInfos.get(position).getType()) == -1) {
+                        return;
+                    } else {
+                        intent.putExtra("type", Tools.getType(gameInfos.get(position).getType()));
+                    }
+                    intent.putExtra("id", gameInfos.get(position).getId());
+                    intent.putExtra("name", gameInfos.get(position).getApply_name());
+                    startActivity(intent);
+                }
+            });
             adapterList.add(appAdapter);
             recycleView.setAdapter(appAdapter);
             pageNums[i] = 1;

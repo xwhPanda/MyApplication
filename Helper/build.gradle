@@ -43,4 +43,5 @@ dependencies {
     compile 'com.squareup.okio:okio:1.9.0'
     compile 'org.greenrobot:greendao:3.0.1'
     compile project(':AnimRefreshRecyclerView')
+    compile 'com.google.android.gms:play-services-appindexing:8.1.0'
 }

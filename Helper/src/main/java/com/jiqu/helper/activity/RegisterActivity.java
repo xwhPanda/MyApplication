@@ -1,16 +1,13 @@
 package com.jiqu.helper.activity;
 
-import android.app.AlertDialog;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 
 import com.jiqu.database.AccountDao;
-import com.jiqu.database.DaoMaster;
 import com.jiqu.helper.BaseActivity;
 import com.jiqu.helper.R;
 import com.jiqu.helper.application.HelperApplication;
@@ -44,7 +41,7 @@ public class RegisterActivity extends BaseActivity implements View.OnClickListen
 
     @Override
     public int getContentView() {
-        return R.layout.login_layout;
+        return R.layout.register_layout;
     }
 
     @Override

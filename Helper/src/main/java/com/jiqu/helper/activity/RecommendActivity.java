@@ -1,5 +1,6 @@
 package com.jiqu.helper.activity;
 
+import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.text.TextUtils;
@@ -11,12 +12,14 @@ import android.widget.TextView;
 
 import com.jiqu.helper.BaseActivity;
 import com.jiqu.helper.R;
+import com.jiqu.helper.adapter.BaseAdapter;
 import com.jiqu.helper.adapter.RecommendAppAdapter;
 import com.jiqu.helper.data.GameChoiceData;
 import com.jiqu.helper.data.GameInfo;
 import com.jiqu.helper.data.MineGameRecommendData;
 import com.jiqu.helper.data.RecommendClassificationItemData;
 import com.jiqu.helper.interfaces.GetDataCallback;
+import com.jiqu.helper.interfaces.RecycleViewOnItemClickListener;
 import com.jiqu.helper.itemDecoration.SpaceItemDecoration;
 import com.jiqu.helper.okhttp.OkHttpManager;
 import com.jiqu.helper.okhttp.OkHttpRequest;
@@ -204,7 +207,22 @@ public class RecommendActivity extends BaseActivity implements View.OnClickListe
                 recycleViewList.add(recycleView);
                 List<GameInfo> infoList = new ArrayList<>();
                 gameInfoList.add(infoList);
+                final List<GameInfo> gameInfos = infoList;
                 RecommendAppAdapter appAdapter = new RecommendAppAdapter(this,R.layout.recommend_app_item_layout,infoList);
+                appAdapter.setListener(new RecycleViewOnItemClickListener() {
+                    @Override
+                    public void onItemClick(View view, BaseAdapter adapter, int position) {
+                        Intent intent = new Intent(RecommendActivity.this, DetailActivity.class);
+                        if (Tools.getType(gameInfos.get(position).getType()) == -1) {
+                            return;
+                        } else {
+                            intent.putExtra("type", Tools.getType(gameInfos.get(position).getType()));
+                        }
+                        intent.putExtra("id", gameInfos.get(position).getId());
+                        intent.putExtra("name", gameInfos.get(position).getApply_name());
+                        startActivity(intent);
+                    }
+                });
                 adapterList.add(appAdapter);
                 recycleView.setAdapter(appAdapter);
             }

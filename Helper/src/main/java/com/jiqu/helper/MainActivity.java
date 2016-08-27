@@ -8,9 +8,12 @@ import android.util.Log;
 import android.view.View;
 
 import com.jiqu.database.Account;
+import com.jiqu.helper.activity.AccountInfoActivity;
+import com.jiqu.helper.activity.LoginActivity;
 import com.jiqu.helper.activity.RegisterActivity;
 import com.jiqu.helper.activity.SearchActivity;
 import com.jiqu.helper.application.HelperApplication;
+import com.jiqu.helper.data.RegisterData;
 import com.jiqu.helper.fragments.AppFragment;
 import com.jiqu.helper.fragments.GameFragment;
 import com.jiqu.helper.fragments.MineFragment;
@@ -82,10 +85,11 @@ public class MainActivity extends BaseFragmentActivity implements OnChangTopView
     private void gotoActivity(){
         Account account = HelperApplication.daoSession.getAccountDao().queryBuilder().unique();
         if (account != null){
-            Log.i("TAG","username :　" + account.getUsername() + " / " + account.getNickname());
+            //用户信息
+            startActivity(new Intent(this,AccountInfoActivity.class));
         }else {
-            startActivity(new Intent(this,RegisterActivity.class));
-            Log.i("TAG","account is null !");
+            //登录
+            startActivity(new Intent(this,LoginActivity.class));
         }
     }
 

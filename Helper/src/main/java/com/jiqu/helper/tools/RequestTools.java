@@ -4,6 +4,8 @@ package com.jiqu.helper.tools;
  * Created by xiongweihua on 2016/7/21.
  */
 public class RequestTools {
+    /** KEY **/
+    public static final String Prikey = "*7&SKJuas";
     /** 推荐页精选 **/
     public static final String RECOMMEND_APP = "http://koa.77gamebox.com/index.php/Api/Recommend/getRecommendData";
     /** 推荐分类 **/
@@ -62,4 +64,6 @@ public class RequestTools {
     public static final String SEARCH_DATA = "http://koi.77gamebox.com/index.php/Api/Recommend/getBySearch?search=";
     /** 用户注册 **/
     public static final String REGISTER_ACCOUNT = "http://koa.77gamebox.com/index.php/Api/User/register";
+    /** 用户登录 **/
+    public static final String LOGIN = "http://koa.77gamebox.com/index.php/Api/User/login";
 }

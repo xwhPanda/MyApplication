@@ -48,7 +48,7 @@ public class OkHttpManager {
         return mOkHttpClient;
     }
 
-    public void execute(OkHttpRequest request, final Class className, final GetDataCallback callback){
+    public void execute(final OkHttpRequest request, final Class className, final GetDataCallback callback){
         request.getCall().enqueue(new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
@@ -58,6 +58,7 @@ public class OkHttpManager {
             @Override
             public void onResponse(final Call call, Response response) throws IOException {
                 String json = response.body().string();
+                Log.i("TAG",json);
                 if (!TextUtils.isEmpty(json)){
                     final Object data = JSON.parseObject(json,className);
                     mHandler.post(new Runnable() {

@@ -1,16 +1,19 @@
 package com.jiqu.helper.fragments;
 
 import android.support.v7.widget.OrientationHelper;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
 
 import com.jiqu.helper.BaseFragment;
 import com.jiqu.helper.R;
+import com.jiqu.helper.adapter.BaseAdapter;
 import com.jiqu.helper.adapter.RecommendClassificationAdapter;
 import com.jiqu.helper.data.RecommendClassificationData;
 import com.jiqu.helper.data.RecommendClassificationItemData;
 import com.jiqu.helper.interfaces.GetDataCallback;
+import com.jiqu.helper.interfaces.RecycleViewOnItemClickListener;
 import com.jiqu.helper.okhttp.OkHttpManager;
 import com.jiqu.helper.okhttp.OkHttpRequest;
 import com.jiqu.helper.tools.RequestTools;
@@ -45,8 +48,8 @@ public class HomeClassificationFragment extends BaseFragment implements AnimRFRe
     @Override
     public void initView() {
         adapter = new RecommendClassificationAdapter(mActivity,R.layout.recommend_classification_item_layout,itemDatas,titleList);
-        classificationRecycleView = (AnimRFRecyclerView) view.findViewById(R.id.classificationRecycleView);
         refreshView = (RefreshView) view.findViewById(R.id.refreshView);
+        classificationRecycleView = (AnimRFRecyclerView) view.findViewById(R.id.classificationRecycleView);
 
         AnimRFLinearLayoutManager manager = new AnimRFLinearLayoutManager(mActivity);
         manager.setOrientation(OrientationHelper.VERTICAL);
@@ -54,6 +57,7 @@ public class HomeClassificationFragment extends BaseFragment implements AnimRFRe
         classificationRecycleView.setHasFixedSize(true);
         classificationRecycleView.setLoadDataListener(this);
         classificationRecycleView.setAdapter(adapter);
+
 
     }
 

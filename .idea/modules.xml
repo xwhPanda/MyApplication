@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/AnimRefreshRecyclerView/AnimRefreshRecyclerView.iml" filepath="$PROJECT_DIR$/AnimRefreshRecyclerView/AnimRefreshRecyclerView.iml" />
       <module fileurl="file://$PROJECT_DIR$/Helper/Helper.iml" filepath="$PROJECT_DIR$/Helper/Helper.iml" />
       <module fileurl="file://$PROJECT_DIR$/MyApplication.iml" filepath="$PROJECT_DIR$/MyApplication.iml" />
+      <module fileurl="file://$PROJECT_DIR$/MyRefreshRecyclerViewLayout/MyRefreshRecyclerViewLayout.iml" filepath="$PROJECT_DIR$/MyRefreshRecyclerViewLayout/MyRefreshRecyclerViewLayout.iml" />
       <module fileurl="file://$PROJECT_DIR$/SwipeToLoadLayout/SwipeToLoadLayout.iml" filepath="$PROJECT_DIR$/SwipeToLoadLayout/SwipeToLoadLayout.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/greendao/greendao.iml" filepath="$PROJECT_DIR$/greendao/greendao.iml" />

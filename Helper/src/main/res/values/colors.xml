@@ -29,4 +29,5 @@
     <color name="uninstall_default_color">#737373</color>
     <color name="clear_before_color">#fb9958</color>
     <color name="clear_after_color">#8fc320</color>
+    <color name="login_btn_color">#1daa39</color>
 </resources>

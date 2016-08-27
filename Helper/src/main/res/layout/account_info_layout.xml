@@ -123,7 +123,7 @@
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:background="@color/recommend_choice_space_color" />
+            android:background="@color/recommend_choice_space_color"/>
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -138,7 +138,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:maxLines="1"
-                android:text="姓名"
+                android:text="昵称"
                 android:textColor="@color/recommend_choice_game_detail_color"
                 android:textSize="15dp" />
 
