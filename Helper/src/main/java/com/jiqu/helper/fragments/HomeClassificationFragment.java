@@ -1,17 +1,21 @@
 package com.jiqu.helper.fragments;
 
+import android.content.Intent;
 import android.support.v7.widget.OrientationHelper;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.TextView;
 
 import com.jiqu.helper.BaseFragment;
 import com.jiqu.helper.R;
+import com.jiqu.helper.activity.RankingActivity;
 import com.jiqu.helper.adapter.BaseAdapter;
 import com.jiqu.helper.adapter.RecommendClassificationAdapter;
 import com.jiqu.helper.data.RecommendClassificationData;
 import com.jiqu.helper.data.RecommendClassificationItemData;
+import com.jiqu.helper.interfaces.ClassificationGridViewItemClickListener;
 import com.jiqu.helper.interfaces.GetDataCallback;
 import com.jiqu.helper.interfaces.RecycleViewOnItemClickListener;
 import com.jiqu.helper.okhttp.OkHttpManager;
@@ -31,7 +35,7 @@ import okhttp3.Call;
  * Created by xiongweihua on 2016/7/6.
  * 首页分类
  */
-public class HomeClassificationFragment extends BaseFragment implements AnimRFRecyclerView.LoadDataListener{
+public class HomeClassificationFragment extends BaseFragment implements AnimRFRecyclerView.LoadDataListener,ClassificationGridViewItemClickListener{
     private final String OKHTTP_TAG = "HomeClassificationFragment";
     private AnimRFRecyclerView classificationRecycleView;
     private List<String> titleList = new ArrayList<>();
@@ -48,6 +52,7 @@ public class HomeClassificationFragment extends BaseFragment implements AnimRFRe
     @Override
     public void initView() {
         adapter = new RecommendClassificationAdapter(mActivity,R.layout.recommend_classification_item_layout,itemDatas,titleList);
+        adapter.setOnItemClickListener(this);
         refreshView = (RefreshView) view.findViewById(R.id.refreshView);
         classificationRecycleView = (AnimRFRecyclerView) view.findViewById(R.id.classificationRecycleView);
 
@@ -104,5 +109,15 @@ public class HomeClassificationFragment extends BaseFragment implements AnimRFRe
     @Override
     public void onLoadMore() {
 
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int gridViewItemPosition, int listViewItemPosition) {
+        Intent intent = new Intent(mActivity, RankingActivity.class);
+        String url = RequestTools.RECOMMEND_CLASSIFICATION_BASE + "?columnId=" + itemDatas.get(listViewItemPosition).get(gridViewItemPosition).getId();
+        String title = itemDatas.get(listViewItemPosition).get(gridViewItemPosition).getName();
+        intent.putExtra("url",url);
+        intent.putExtra("title",title);
+        startActivity(intent);
     }
 }

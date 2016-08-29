@@ -1,15 +1,19 @@
 package com.jiqu.helper.fragments;
 
+import android.content.Intent;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.OrientationHelper;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 
 import com.jiqu.helper.BaseFragment;
 import com.jiqu.helper.R;
+import com.jiqu.helper.activity.RankingActivity;
 import com.jiqu.helper.adapter.RecommendClassificationAdapter;
 import com.jiqu.helper.data.RecommendClassificationData;
 import com.jiqu.helper.data.RecommendClassificationItemData;
+import com.jiqu.helper.interfaces.ClassificationGridViewItemClickListener;
 import com.jiqu.helper.interfaces.GetDataCallback;
 import com.jiqu.helper.itemDecoration.SpaceItemDecoration;
 import com.jiqu.helper.okhttp.OkHttpManager;
@@ -28,7 +32,7 @@ import okhttp3.Call;
 /**
  * Created by xiongweihua on 2016/8/11.
  */
-public class AppClassificationFragment extends BaseFragment implements MyRecycleView.OnLoadDataListener{
+public class AppClassificationFragment extends BaseFragment implements MyRecycleView.OnLoadDataListener,ClassificationGridViewItemClickListener{
     private final String OKHTTP_TAG = "AppClassificationFragment";
     private MyRecycleView classificationRecycleView;
     private RefreshView refreshView;
@@ -45,6 +49,7 @@ public class AppClassificationFragment extends BaseFragment implements MyRecycle
     @Override
     public void initView() {
         adapter = new RecommendClassificationAdapter(mActivity,R.layout.recommend_classification_item_layout,classificationList,titleList);
+        adapter.setOnItemClickListener(this);
         classificationRecycleView = (MyRecycleView) view.findViewById(R.id.classificationRecycleView);
         refreshView = (RefreshView) view.findViewById(R.id.refreshView);
 
@@ -98,5 +103,15 @@ public class AppClassificationFragment extends BaseFragment implements MyRecycle
         super.onDestroyView();
         classificationRecycleView.cancelLoad();
         OkHttpManager.getInstance().cancelByTag(OKHTTP_TAG);
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> adapterView, View view, int gridViewItemPosition, int listViewItemPosition) {
+        Intent intent = new Intent(mActivity, RankingActivity.class);
+        String url = RequestTools.APP_CLASSIFICATION_BASE + "?columnId=" + classificationList.get(listViewItemPosition).get(gridViewItemPosition).getId();
+        String title = classificationList.get(listViewItemPosition).get(gridViewItemPosition).getName();
+        intent.putExtra("url",url);
+        intent.putExtra("title",title);
+        startActivity(intent);
     }
 }

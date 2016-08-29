@@ -9,6 +9,7 @@
         android:id="@+id/gridView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:listSelector="@color/transparent"
         android:numColumns="3">
     </com.jiqu.helper.view.HeaderGridView>
 </LinearLayout>

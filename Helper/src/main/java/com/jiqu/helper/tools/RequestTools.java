@@ -66,4 +66,10 @@ public class RequestTools {
     public static final String REGISTER_ACCOUNT = "http://koa.77gamebox.com/index.php/Api/User/register";
     /** 用户登录 **/
     public static final String LOGIN = "http://koa.77gamebox.com/index.php/Api/User/login";
+    /** 推荐分类BASE URL **/
+    public static final String RECOMMEND_CLASSIFICATION_BASE = "http://koa.77gamebox.com/index.php/Api/Recommend/getApp";
+    /** 游戏分类BASE URL **/
+    public static final String GAME_CLASSIFICATION_BASE = "http://koa.77gamebox.com/index.php/Api/Game/getGameList";
+    /** 应用分类BASE URL **/
+    public static final String APP_CLASSIFICATION_BASE = "http://koa.77gamebox.com/index.php/Api/Apply/getApply";
 }
