@@ -1,6 +1,7 @@
 package com.xwh.view;
 
 import android.content.Context;
+import android.support.v4.view.MotionEventCompat;
 import android.support.v4.view.NestedScrollingChild;
 import android.support.v4.view.NestedScrollingChildHelper;
 import android.support.v4.view.NestedScrollingParent;
@@ -8,8 +9,9 @@ import android.support.v4.view.NestedScrollingParentHelper;
 import android.support.v4.view.ViewCompat;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.LinearLayout;
 
 import com.xwh.interfaces.OnRefreshListener;
@@ -23,7 +25,11 @@ public class RefreshRecyclerViewLayout extends LinearLayout implements NestedScr
     private NestedScrollingParentHelper mNestedScrollingParentHelper;
     private final int[] mParentScrollConsumed = new int[2];
     private float mTotalUnconsumed;
+    private float mInitialDownY;
+    private boolean mIsBeingDragged;
     private boolean mRefreshing;
+    //正在刷新的时候，如果往上滑，需要隐藏掉headview；此参数为开始滑动时headview的底部位置
+    private float mRefreshingPushHeadBottom = 0;
     //下拉刷新在垂直方向的距离
     private int mCurrentTargetOffsetTop;
     //下拉刷新view
@@ -61,10 +67,10 @@ public class RefreshRecyclerViewLayout extends LinearLayout implements NestedScr
         mContentView = getChildAt(1);
         mFooterView = getChildAt(2);
 
-        mHeadViewWidth = mHeadView.getWidth();
-        mHeadViewHeight = mHeadView.getHeight();
-        mFooterViewWidth = mFooterView.getWidth();
-        mFooterViewHeight = mFooterView.getHeight();
+        mHeadViewWidth = mHeadView.getMeasuredWidth();
+        mHeadViewHeight = mHeadView.getMeasuredHeight();
+        mFooterViewWidth = mFooterView.getMeasuredWidth();
+        mFooterViewHeight = mFooterView.getMeasuredHeight();
     }
 
     // NestedScrollingParent
@@ -216,9 +222,26 @@ public class RefreshRecyclerViewLayout extends LinearLayout implements NestedScr
         return mNestedScrollingChildHelper.dispatchNestedPreFling(velocityX, velocityY);
     }
 
+
+    //判断mContentView在垂直方向上是否可以滚动
+    public boolean canChildScrollUp() {
+        if (android.os.Build.VERSION.SDK_INT < 14) {
+            if (mContentView instanceof AbsListView) {
+                final AbsListView absListView = (AbsListView) mContentView;
+                return absListView.getChildCount() > 0
+                        && (absListView.getFirstVisiblePosition() > 0 || absListView.getChildAt(0)
+                        .getTop() < absListView.getPaddingTop());
+            } else {
+                return ViewCompat.canScrollVertically(mContentView, -1) || mContentView.getScrollY() > 0;
+            }
+        } else {
+            return ViewCompat.canScrollVertically(mContentView, -1);
+        }
+    }
+
+
     @Override
     protected void onLayout(boolean b, int i, int i1, int i2, int i3) {
-        Log.i("TAG",getChildCount() + "");
         if (mContentView == null)
             initView();
         final int width = getMeasuredWidth();
@@ -229,8 +252,8 @@ public class RefreshRecyclerViewLayout extends LinearLayout implements NestedScr
         final int childHeight = height - getPaddingTop() - getPaddingBottom();
         if (getChildCount() == 0 || mContentView == null)
             return;
-        mContentView.layout(childLeft,childTop,childLeft + childWidth,childTop + childHeight);
-        mHeadView.layout(childLeft,mCurrentTargetOffsetTop,childLeft + mHeadViewWidth,mHeadViewHeight + mCurrentTargetOffsetTop);
+        mContentView.layout(childLeft,childTop + mCurrentTargetOffsetTop,childLeft + childWidth,childTop + childHeight + mCurrentTargetOffsetTop);
+        mHeadView.layout(childLeft,-mHeadViewHeight,childLeft + mHeadViewWidth,mCurrentTargetOffsetTop);
         mFooterView.layout(childLeft,height - mFooterViewHeight,childLeft + mFooterViewWidth,height);
     }
 
@@ -239,11 +262,94 @@ public class RefreshRecyclerViewLayout extends LinearLayout implements NestedScr
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
         if (mContentView == null)
             return;
-        mContentView.measure(MeasureSpec.makeMeasureSpec(getMeasuredWidth() - getPaddingLeft() - getPaddingRight(),MeasureSpec.EXACTLY)
-            ,MeasureSpec.makeMeasureSpec(getMeasuredHeight() - getPaddingTop() - getPaddingTop(),MeasureSpec.EXACTLY));
-        mHeadView.measure(MeasureSpec.makeMeasureSpec(getMeasuredWidth() - getPaddingLeft() - getPaddingRight(),MeasureSpec.EXACTLY)
-                ,MeasureSpec.makeMeasureSpec(getMeasuredHeight() - getPaddingTop() - getPaddingTop(),MeasureSpec.EXACTLY));
-        mFooterView.measure(MeasureSpec.makeMeasureSpec(getMeasuredWidth() - getPaddingLeft() - getPaddingRight(),MeasureSpec.EXACTLY)
-                ,MeasureSpec.makeMeasureSpec(getMeasuredHeight() - getPaddingTop() - getPaddingTop(),MeasureSpec.EXACTLY));
+//        mContentView.measure(MeasureSpec.makeMeasureSpec(getMeasuredWidth() - getPaddingLeft() - getPaddingRight(),MeasureSpec.EXACTLY)
+//            ,MeasureSpec.makeMeasureSpec(getMeasuredHeight() - getPaddingTop() - getPaddingTop(),MeasureSpec.EXACTLY));
+//        mHeadView.measure(MeasureSpec.makeMeasureSpec(getMeasuredWidth() - getPaddingLeft() - getPaddingRight(),MeasureSpec.EXACTLY)
+//                ,MeasureSpec.makeMeasureSpec(getMeasuredHeight() - getPaddingTop() - getPaddingTop(),MeasureSpec.EXACTLY));
+//        mFooterView.measure(MeasureSpec.makeMeasureSpec(getMeasuredWidth() - getPaddingLeft() - getPaddingRight(),MeasureSpec.EXACTLY)
+//                ,MeasureSpec.makeMeasureSpec(getMeasuredHeight() - getPaddingTop() - getPaddingTop(),MeasureSpec.EXACTLY));
+    }
+
+    @Override
+    public boolean onInterceptTouchEvent(MotionEvent ev) {
+        final int action = MotionEventCompat.getActionMasked(ev);
+        if (canChildScrollUp())
+            return false;
+        switch (action){
+            case MotionEvent.ACTION_DOWN:
+                mIsBeingDragged = false;
+                mInitialDownY = ev.getY();
+                break;
+            case MotionEvent.ACTION_MOVE:
+                float y = ev.getY();
+                if ((y - mInitialDownY > 10 && !mIsBeingDragged && !mRefreshing)){
+                    mIsBeingDragged = true;
+                }
+                if ((mRefreshing && y - mInitialDownY < 0)){
+                    return true;
+                }
+                break;
+            case MotionEvent.ACTION_UP:
+            case MotionEvent.ACTION_CANCEL:
+                mIsBeingDragged = false;
+                break;
+        }
+        return mIsBeingDragged;
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+        final int action = MotionEventCompat.getActionMasked(event);
+        if (canChildScrollUp())
+            return false;
+        switch (action){
+            case MotionEvent.ACTION_DOWN:
+                mIsBeingDragged = false;
+                break;
+            case MotionEvent.ACTION_MOVE:
+                float y = event.getY();
+
+                if (mIsBeingDragged){
+                    mCurrentTargetOffsetTop = mContentView.getTop();
+                    mHeadView.offsetTopAndBottom((int)(y - mInitialDownY - mCurrentTargetOffsetTop));
+                    mContentView.offsetTopAndBottom((int)(y - mInitialDownY - mCurrentTargetOffsetTop));
+                    invalidate();
+                }else {
+                    if (mRefreshing){
+                        if (y - mInitialDownY < 0 && mContentView.getTop() > 0){
+                            if (mRefreshingPushHeadBottom == 0)
+                                mRefreshingPushHeadBottom = mHeadView.getBottom();
+                            mContentView.offsetTopAndBottom((int)(y - mInitialDownY + mRefreshingPushHeadBottom - mHeadView.getBottom()));
+                            mHeadView.offsetTopAndBottom((int)(y - mInitialDownY + mRefreshingPushHeadBottom - mHeadView.getBottom()));
+                            invalidate();
+                        }else if (mHeadView.getTop() <= -mHeadViewHeight){
+//                            mRefreshing = false;
+                            return false;
+                        }
+                    }
+                }
+                break;
+            case MotionEvent.ACTION_UP:
+                if (mIsBeingDragged && !mRefreshing){
+                    if (mHeadView.getBottom() <= mHeadViewHeight / 2){
+                        mHeadView.offsetTopAndBottom((int)( - mHeadView.getBottom()));
+                        mContentView.offsetTopAndBottom((int)(- mContentView.getTop()));
+                    }else {
+                        mIsBeingDragged = false;
+                        mHeadView.offsetTopAndBottom((int)( - mHeadView.getTop()));
+                        mContentView.offsetTopAndBottom((int)(mHeadViewHeight - mContentView.getTop()));
+                        mRefreshing = true;
+                    }
+                    invalidate();
+
+                }else if (mRefreshing){
+                    mRefreshing = false;
+                }
+                return true;
+            case MotionEvent.ACTION_CANCEL:
+                mIsBeingDragged = false;
+                return false;
+        }
+        return true;
     }
 }

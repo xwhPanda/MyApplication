@@ -7,11 +7,17 @@
     <TextView
         android:text="Hello World!"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="50dp"
+        android:textColor="@android:color/black"
+        android:background="@android:color/holo_red_dark"
+        android:gravity="center"
+        android:layout_gravity="center"/>
 
     <android.support.v7.widget.RecyclerView
+        android:id="@+id/recyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"
+        android:background="@android:color/holo_blue_light"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
