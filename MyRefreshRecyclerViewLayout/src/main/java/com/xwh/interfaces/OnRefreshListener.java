@@ -4,6 +4,8 @@ package com.xwh.interfaces;
  * Created by xiongweihua on 2016/8/27.
  */
 public interface OnRefreshListener {
+    //开始刷新
+    void startRefresh();
     //正在刷新
     void refreshing();
     //刷新失败

@@ -73,6 +73,7 @@ public class NestedScrollingLayout extends LinearLayout implements NestedScrolli
 
     @Override
     public void onNestedPreScroll(View target, int dx, int dy, int[] consumed) {
+        //dy > 0:向上滑动；dy < 0:向下滑动
         boolean hiddenTop = dy > 0 && getScrollY() < headHeight;
         boolean showTop = dy < 0 && getScrollY() >= 0 && !ViewCompat.canScrollVertically(target, -1);
 

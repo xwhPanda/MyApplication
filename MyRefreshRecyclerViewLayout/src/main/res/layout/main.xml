@@ -1,25 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.xwh.view.RefreshRecyclerViewLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="horizontal">
 
-    <TextView
-        android:text="Hello World!"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:textColor="@android:color/black"
-        android:background="@android:color/holo_red_dark"
-        android:gravity="center"
-        android:layout_gravity="center"/>
-
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
+    <com.xwh.view.RefreshRecyclerViewLayout
+        android:id="@+id/layout"
+        android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:background="@android:color/holo_blue_light"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="66666666666"/>
-</com.xwh.view.RefreshRecyclerViewLayout>
+        android:layout_weight="1">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:background="@android:color/holo_red_dark"
+            android:gravity="center"
+            android:text="Hello World!"
+            android:textColor="@android:color/black" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/holo_blue_light" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="66666666666"
+            android:background="@android:color/holo_red_dark"/>
+    </com.xwh.view.RefreshRecyclerViewLayout>
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1">
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@android:color/holo_blue_light" />
+    </android.support.v4.widget.SwipeRefreshLayout>
+</LinearLayout>
